@@ -30,8 +30,8 @@ function GetGeneralMovies() {
 		.then((datagotten) => {
 			let movieLists = datagotten.results;
 			movieLists.forEach((movie) => {
-				const { title, vote_average, poster_path, release_date } = movie;
-				Movie(title, vote_average, poster_path, release_date);
+				const { title, vote_average, poster_path, release_date, backdrop_path } = movie;
+				Movie(title, vote_average, poster_path, release_date, backdrop_path);
 			});
 		})
 		.catch((error) => {
@@ -63,14 +63,15 @@ function GetMovies(url) {
 		})
 		.then((data) => {
 			data.results.forEach((movie) => {
-				const { title, vote_average, poster_path, release_date } = movie;
-				Movie(title, vote_average, poster_path, release_date);
+				const { title, vote_average, poster_path, release_date, backdrop_path } = movie;
+				Movie(title, vote_average, poster_path, release_date, backdrop_path);
 			});
 		});
 }
 
 function Movie(title, vote_average, poster_path, release_date) {
-	let imgSrcPath = `${image_base_url}${poster_path}`;
+	let posterPath = poster_path === null || poster_path === undefined ? backdrop_path : backdrop_path;
+	let imgSrcPath = `${image_base_url}${posterPath}`;
 	let item = `<a href="#" class="each-movie">
 			<div class="each-movie-inner">
 				<div class="movie-image-wrapper">
