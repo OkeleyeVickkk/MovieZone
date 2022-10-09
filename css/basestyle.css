@@ -1,0 +1,104 @@
+/* main */
+.banner {
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+@media all and (min-width: 768px) {
+	.banner {
+		height: 450px;
+	}
+}
+.banner .banner-image {
+	filter: brightness(0.5);
+}
+.banner .banner-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	translate: -50% -50%;
+	z-index: 1;
+}
+main .main-inner {
+	scroll-snap-type: y mandatory;
+}
+main .main-inner section {
+	padding: 4pc 0 0;
+	margin-bottom: 2rem;
+	scroll-snap-align: center;
+}
+
+.all-sections .movie-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	margin-top: 3rem;
+	gap: 2rem;
+}
+@media all and (max-width: 768px) {
+	.all-sections .movie-wrapper {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media all and (max-width: 600px) {
+	.all-sections .movie-wrapper {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media all and (max-width: 426px) {
+	.all-sections .movie-wrapper {
+		grid-template-columns: 1fr;
+	}
+}
+.all-sections .section-header a {
+	color: var(--primary-clr);
+}
+.all-sections .section-header a:hover {
+	text-decoration: underline;
+}
+.movie-wrapper .each-movie {
+	border-radius: 5px;
+	overflow: hidden;
+	color: var(--dark);
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.movie-wrapper .each-movie:hover {
+	scale: 1.02;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.movie-wrapper .movie-image-wrapper {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.movie-wrapper .each-movie img {
+	object-fit: cover;
+}
+.each-movie-inner {
+	display: flex;
+	flex-direction: column;
+}
+.each-movie-inner .movie-content {
+	padding: 1rem 10px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	color: var(--light-dark);
+}
+.movie-content .movie-title {
+	color: var(--dark);
+	font-weight: 600;
+}
+.movie-content em {
+	line-height: 1;
+	display: flex;
+	color: var(--primary-clr);
+	font-size: 1rem;
+}
+.movie-content .inner-content .right {
+	column-gap: 0.8em;
+}
+.movie-content :is(.rating, .movie-length) {
+	column-gap: 3px;
+	white-space: nowrap;
+}

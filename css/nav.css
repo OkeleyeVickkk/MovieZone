@@ -1,0 +1,164 @@
+@font-face {
+	font-family: font-family;
+	src: url("../font/BeVietnamPro-Regular.ttf");
+}
+/* variables */
+:root {
+	--font-family: font-family;
+	--white: #fff;
+	--black: #000;
+	--dark-theme: #003566;
+	--primary-clr: #e71d36;
+	--dark: #0d1321;
+	--light-dark: #1d2d44;
+}
+html {
+	scroll-behavior: smooth;
+}
+/* defaults */
+:is(*, *::before, *::after) {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-family);
+	line-height: 1.4;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialised;
+	-moz-osx-font-smoothing: grayscale;
+	font-smooth: always;
+}
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+* :is(h1, h2, h3, h4, h5, h6, ul, p) {
+	margin: 0;
+	color: var(--light-dark);
+}
+a {
+	text-decoration: none;
+}
+a,
+button {
+	-webkit-transition: 250ms ease-in;
+	-moz-transition: 250ms ease-in;
+	-ms-transition: 250ms ease-in;
+	-o-transition: 250ms ease-in;
+	transition: 250ms ease-in;
+	font-size: 14px;
+}
+button {
+	all: unset;
+}
+/* page styles */
+body {
+	position: relative;
+	background-color: var(--white);
+}
+header #logo em {
+	fill: var(--white);
+	line-height: 1;
+}
+header #logo em svg {
+	width: 14rem;
+}
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+}
+header nav {
+	padding: 1.3rem 1.8rem;
+}
+@media all and (max-width: 600px) {
+	header nav {
+		padding: 1.3rem 0.8rem;
+	}
+}
+header nav ._nav-links {
+	column-gap: 2rem;
+}
+._nav-links a {
+	font-size: 0.95rem;
+	color: var(--white);
+	position: relative;
+}
+header nav .nav-theme {
+	column-gap: 2rem;
+	justify-content: flex-end;
+}
+header nav .nav-theme .nav-theme-toggler em {
+	font-size: 1.5rem;
+	color: var(--white);
+}
+header nav .nav-theme .git-hub em {
+	font-size: 2rem;
+	cursor: pointer;
+	line-height: 1;
+	color: var(--white);
+}
+._nav-links a::before {
+	position: absolute;
+	content: "";
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: var(--primary-clr);
+	transform: scaleX(0);
+	transition: transform 280ms ease, background-color 280ms ease;
+	transform-origin: bottom right;
+}
+._nav-links a:hover::before {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+}
+._banner-section {
+	position: relative;
+	height: 500px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	filter: brightness(0.6);
+}
+@media all and (max-width: 600px) {
+	._banner-section {
+		height: auto;
+	}
+}
+/* burger menu */
+.nav-theme .git-hub {
+	line-height: 1;
+}
+.nav-theme .button-toggler {
+	border: none;
+	color: var(--white);
+}
+.nav-theme .button-toggler span {
+	font-size: 2rem;
+	line-height: 1;
+	display: flex;
+}
+
+.offcanvas.show:not(.hiding) + .wrapper {
+	filter: blur(4px);
+}
+@media all and (min-width: 769px) {
+	.offcanvas.show:not(.hiding),
+	.offcanvas.showing {
+		display: none;
+	}
+	.offcanvas.show:not(.hiding) + .wrapper {
+		filter: blur(0);
+	}
+	.offcanvas-backdrop.show {
+		display: none;
+	}
+}
+
+@media all and (max-width: 600px) {
+	html {
+		font-size: 14px;
+	}
+}

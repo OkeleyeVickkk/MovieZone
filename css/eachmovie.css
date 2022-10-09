@@ -1,0 +1,226 @@
+:root {
+	--white: #fff;
+	--black: #000;
+	--dark-theme: #003566;
+	--primary-clr: #e71d36;
+	--dark: #0d1321;
+	--light-dark: #1d2d44;
+	--gold: rgb(255, 192, 0);
+}
+
+.wrapper {
+	position: relative;
+}
+header {
+	box-shadow: none;
+	background-color: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.nav-theme * a {
+	color: var(--white);
+}
+.nav-theme .button-toggler {
+	border: none;
+	background: transparent;
+	color: var(--white);
+}
+.banner {
+	height: auto;
+	overflow: hidden;
+	position: relative;
+}
+@media all and (min-width: 768px) {
+	.banner {
+		height: 450px;
+	}
+}
+.banner .banner-image {
+	filter: brightness(0.8);
+}
+
+/* something is written here */
+
+.search-section {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	translate: -50% -50%;
+	z-index: 1;
+}
+.search-section .form-input {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+}
+.search-section .form-input .form-control {
+	border-radius: 4px 0 0 4px;
+	min-height: 3rem;
+	border-right: 0;
+	-webkit-transition: 100ms ease;
+	-moz-transition: 100ms ease;
+	-ms-transition: 100ms ease;
+	-o-transition: 100ms ease;
+	transition: 100ms ease;
+}
+.search-section .form-input .form-control::placeholder {
+	font-size: 15px;
+}
+.search-section .form-control:focus {
+	box-shadow: none;
+	border: 2px solid var(--primary-clr);
+}
+.search-section form button {
+	border-radius: 0 4px 4px 0;
+	height: 3rem;
+	padding: 0 2rem;
+	border: none;
+	background-color: var(--primary-clr);
+	color: var(--white);
+	font-size: 1rem;
+}
+.search-section form {
+	width: 90%;
+	margin-inline: auto;
+}
+@media all and (min-width: 768px) {
+	.search-section form {
+		width: 60%;
+	}
+}
+.search-section form h3 {
+	color: var(--white);
+}
+
+main .movie-content-inner {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	border-bottom: 1px solid #d7d7d7;
+	width: 100%;
+	padding-bottom: 1rem;
+}
+main .movie-content > span {
+	column-gap: 1rem;
+	align-items: baseline;
+}
+main {
+	padding: 2rem 0;
+}
+main .rating-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+main .rating-wrapper .rule {
+	height: 20px;
+	width: 1px;
+	background-color: #d7d7d7;
+	margin: 0 0.6rem;
+}
+main .rating-wrapper :is(.rating, .rate) {
+	column-gap: 5px;
+}
+main .rating-wrapper .rating em {
+	color: var(--gold);
+}
+.movie-length {
+	display: flex;
+	flex-direction: column;
+	-ms-flex-direction: column;
+	row-gap: 0.5rem;
+	margin-top: 1rem;
+}
+.movie-poster {
+	margin-top: 2rem;
+	display: flex;
+	align-items: flex-start;
+	gap: 2rem;
+}
+.movie-poster-content {
+	flex-shrink: 3;
+}
+.movie-poster-content .casting {
+	display: flex;
+	flex-direction: column;
+	-ms-flex-direction: column;
+	row-gap: 1rem;
+}
+.movie-poster-content .casting h5 {
+	font-weight: 900;
+	font-size: 1.1rem;
+}
+.movie-info {
+	position: relative;
+}
+.movie-info video {
+	filter: brightness(0.8);
+	width: 100%;
+}
+.movie-info button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	font-size: 3rem;
+	color: var(--primary-clr);
+	line-height: 1;
+	display: flex;
+}
+
+.more-movies {
+	margin-top: 6rem;
+}
+.more-movies .movie-wrapper {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 2rem;
+	margin-top: 1rem;
+}
+@media all and (max-width: 768px) {
+	.more-movies .movie-wrapper {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media all and (max-width: 600px) {
+	.more-movies .movie-wrapper {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media all and (max-width: 426px) {
+	.more-movies .movie-wrapper {
+		grid-template-columns: 1fr;
+	}
+}
+.movie-wrapper .each-movie {
+	border-radius: 5px;
+	overflow: hidden;
+	color: var(--dark);
+}
+.movie-wrapper .movie-image-wrapper {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.movie-wrapper .each-movie img {
+	object-fit: cover;
+}
+.each-movie-inner {
+	display: flex;
+	flex-direction: column;
+}
+.each-movie-inner .movie-content {
+	padding: 1rem 10px;
+	display: flex;
+	row-gap: 10px;
+	justify-content: center;
+	color: var(--light-dark);
+}
+.movie-content .movie-title {
+	color: var(--dark);
+	font-weight: 600;
+}
