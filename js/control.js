@@ -41,10 +41,11 @@ function GetGeneralMovies() {
 
 const input = document.querySelector(".search-section input");
 const form = document.querySelector(".search-section form");
+const formButton = document.querySelector(".search-section form button");
 
 const search_url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=`;
 
-form.addEventListener("submit", function (e) {
+formButton.addEventListener("click", function (e) {
 	e.preventDefault();
 	let queryString = input.value;
 	movieWrapper.innerHTML = "";
