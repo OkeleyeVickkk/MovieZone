@@ -12,7 +12,7 @@ fetch(LATEST_MOVIES_URL, {
 	},
 })
 	.then((response) => {
-		if (!response.status === 300) {
+		if (!response.status === 200) {
 			throw new Error();
 		}
 		return response.json();
@@ -62,8 +62,5 @@ fetch(LATEST_MOVIES_URL, {
 		});
 	})
 	.catch((error) => {
-		movieWrapper += error ? error : "Error";
+		console.log(error);
 	});
-
-const href = window.location.href;
-const url = new URL(href);
