@@ -69,8 +69,8 @@ function GetMovies(url) {
 		});
 }
 
-function Movie(title, vote_average, poster_path, release_date) {
-	let posterPath = poster_path === null || poster_path === undefined ? backdrop_path : backdrop_path;
+function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
+	let posterPath = poster_path ?? backdrop_path;
 	let imgSrcPath = `${image_base_url}${posterPath}`;
 	let item = `<a href="#" class="each-movie">
 			<div class="each-movie-inner">
