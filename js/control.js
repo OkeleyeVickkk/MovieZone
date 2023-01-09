@@ -1,6 +1,6 @@
-const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
+// const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
 
-let movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
+const movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
 
 function RandomPage() {
 	let numbers = "123456789";
@@ -72,6 +72,8 @@ function GetMovies(url) {
 function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
 	let posterPath = poster_path ?? backdrop_path;
 	let imgSrcPath = `${image_base_url}${posterPath}`;
+	const movieTemplate = document.getElementById("movie-item");
+	const clonedMovieTemplate = movieTemplate.contentEditable.cloneNode(true);
 	let item = `<a href="#" class="each-movie">
 			<div class="each-movie-inner">
 				<div class="movie-image-wrapper">
