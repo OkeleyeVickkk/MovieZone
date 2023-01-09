@@ -1,4 +1,5 @@
-// fetching data from an api
+const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
+
 let movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
 
 function RandomPage() {
@@ -11,7 +12,6 @@ function RandomPage() {
 }
 const randomNum = RandomPage();
 
-const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
 const image_base_url = "https://image.tmdb.org/t/p/w1280/";
 const LATEST_MOVIES_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomNum}&with_watch_monetization_types=flatrate`;
 
