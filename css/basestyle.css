@@ -11,8 +11,7 @@
 
 /* layer */
 .layer {
-	position: absolute;
-	min-height: 100vh;
+	position: fixed;
 	width: 100%;
 	background-color: var(--primary-clr);
 	z-index: 199;
