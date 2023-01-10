@@ -11,6 +11,7 @@
 	--primary-clr: #e71d36;
 	--dark: #0d1321;
 	--light-dark: #1d2d44;
+	--skeleton-color: #d3d8dc;
 }
 html {
 	scroll-behavior: smooth;
