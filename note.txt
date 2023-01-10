@@ -1,0 +1,13 @@
+todos
+1. Use skeleton loader for all pages of this site
+2. Use og meta for properties certain parts of the web
+3. Pages include 
+- Index page
+- Each movie page
+- Actors page
+- tvshows page
+- all movies page
+
+==> plugins include
+1. Swiper js
+2. gsap 
