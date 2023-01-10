@@ -58,6 +58,9 @@ header #logo em {
 	fill: var(--white);
 	line-height: 1;
 }
+header nav:not(:has(.home)) #logo em {
+	fill: var(--dark);
+}
 header #logo em svg {
 	width: 14rem;
 }
@@ -71,6 +74,17 @@ header {
 header nav {
 	padding: 1.3rem 1.8rem;
 }
+header nav:not(:has(.home)) {
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+._nav-links a {
+	font-size: 0.95rem;
+	color: var(--white);
+	position: relative;
+}
+header nav:not(:has(.home)) ._nav-links a {
+	color: var(--dark);
+}
 @media all and (max-width: 600px) {
 	header nav {
 		padding: 1.3rem 0.8rem;
@@ -79,24 +93,18 @@ header nav {
 header nav ._nav-links {
 	column-gap: 2rem;
 }
-._nav-links a {
-	font-size: 0.95rem;
-	color: var(--white);
-	position: relative;
-}
 header nav .nav-theme {
 	column-gap: 2rem;
 	justify-content: flex-end;
-}
-header nav .nav-theme .nav-theme-toggler em {
-	font-size: 1.5rem;
-	color: var(--white);
 }
 header nav .nav-theme .git-hub em {
 	font-size: 2rem;
 	cursor: pointer;
 	line-height: 1;
 	color: var(--white);
+}
+header nav:not(:has(.home)) .git-hub em {
+	color: var(--dark);
 }
 ._nav-links a::before {
 	position: absolute;
@@ -130,10 +138,6 @@ header nav .nav-theme .git-hub em {
 /* burger menu */
 .nav-theme .git-hub {
 	line-height: 1;
-}
-.nav-theme .button-toggler {
-	border: none;
-	color: var(--white);
 }
 .nav-theme .button-toggler span {
 	font-size: 2rem;
