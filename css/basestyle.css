@@ -1,3 +1,24 @@
+/* variables */
+/* :root {
+	--font-family: font-family;
+	--white: #fff;
+	--black: #000;
+	--dark-theme: #003566;
+	--primary-clr: #e71d36;
+	--dark: #0d1321;
+	--light-dark: #1d2d44;
+} */
+
+/* layer */
+.layer {
+	position: absolute;
+	min-height: 100vh;
+	width: 100%;
+	background-color: var(--primary-clr);
+	z-index: 199;
+	inset: 0;
+}
+
 /* main */
 .banner {
 	height: auto;
