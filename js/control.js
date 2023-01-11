@@ -1,7 +1,19 @@
 var splide = new Splide(".splide", {
 	type: "loop",
-	perPage: 3,
+	perPage: 6,
 	perMove: 1,
+	arrowPath: `m31.9 13.4-1.41 1.41 4.21 4.21h-33.1v2h33.1l-4.21 4.21 1.41 1.41 5.21-5.21 1.42-1.41-1.42-1.41z`,
+	breakpoints: {
+		991: {
+			perPage: 5,
+		},
+		768: {
+			perPage: 3,
+		},
+		600: {
+			perPage: 2,
+		},
+	},
 });
 
 splide.mount();
