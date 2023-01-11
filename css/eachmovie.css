@@ -1,0 +1,29 @@
+:root {
+	--white: #fff;
+	--black: #000;
+	--primary-clr: #e71d36;
+	--dark: #0d1321;
+	/* --skeleton-color: #d3d8dc; */
+	--skeleton-color: rgba(211, 216, 220, 0.561);
+	--skeleton-color-opacity: rgba(211, 216, 220, 0.1);
+	--border-clr: #0101012e;
+}
+
+.movie-item > div {
+	row-gap: 3rem;
+}
+
+.swiper {
+	aspect-ratio: 16 / 9;
+}
+@media screen and (max-width: 425px) {
+	.swiper {
+		max-width: 90%;
+	}
+}
+@media screen and (min-width: 426px) {
+	.swiper {
+		max-width: 80%;
+		margin-inline: auto;
+	}
+}
