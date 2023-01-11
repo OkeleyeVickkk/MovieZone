@@ -1,24 +1,4 @@
-var splide = new Splide(".splide", {
-	type: "loop",
-	perPage: 6,
-	perMove: 1,
-	arrowPath: `m31.9 13.4-1.41 1.41 4.21 4.21h-33.1v2h33.1l-4.21 4.21 1.41 1.41 5.21-5.21 1.42-1.41-1.42-1.41z`,
-	breakpoints: {
-		991: {
-			perPage: 5,
-		},
-		768: {
-			perPage: 3,
-		},
-		600: {
-			perPage: 2,
-		},
-	},
-});
-
-splide.mount();
-
-// const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
+const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
 
 const movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
 
@@ -48,11 +28,11 @@ function GetGeneralMovies() {
 			return response.json();
 		})
 		.then((datagotten) => {
-			let movieLists = datagotten.results;
-			movieLists.forEach((movie) => {
-				const { title, vote_average, poster_path, release_date, backdrop_path } = movie;
-				Movie(title, vote_average, poster_path, release_date, backdrop_path);
-			});
+			// let movieLists = datagotten.results;
+			// movieLists.forEach((movie) => {
+			// 	const { title, vote_average, poster_path, release_date, backdrop_path } = movie;
+			// 	Movie(title, vote_average, poster_path, release_date, backdrop_path);
+			// });
 		})
 		.catch((error) => {
 			console.log(error);
@@ -128,3 +108,13 @@ function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
 
 	movieWrapper.innerHTML += item;
 }
+
+function addSkeletonLoader() {
+	const skeletonItem = document.querySelector(".skeleton-loader");
+	const cloneSkeletons = skeletonItem.content.cloneNode(true);
+	const parent = document.querySelector(".all-sections > .movie-wrapper");
+	for (let i = 0; i < 10; i++) {
+		parent.appendChild(cloneSkeletons);
+	}
+}
+addSkeletonLoader();
