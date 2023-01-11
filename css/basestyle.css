@@ -2,6 +2,7 @@
 	--white: #fff;
 	--black: #000;
 	--primary-clr: #e71d36;
+	--primary-clr-opacity: rgb(231, 29, 54, 0.2);
 	--dark: #0d1321;
 	/* --skeleton-color: #d3d8dc; */
 	--skeleton-color: rgba(211, 216, 220, 0.561);
@@ -72,7 +73,7 @@ main .main-inner section {
 	transition: 100ms ease;
 }
 .search-section .form-input .form-control::placeholder {
-	font-size: 15px;
+	font-size: 14px;
 }
 .search-section .form-control:focus {
 	box-shadow: none;
@@ -207,10 +208,10 @@ main .main-inner section {
 }
 .skeleton-release-date {
 	width: 50%;
-	height: 1rem;
+	height: 0.8rem;
 }
 .skeleton-like {
-	height: 1rem;
+	height: 0.8rem;
 	width: 20%;
 }
 .skeleton::before {
@@ -246,10 +247,14 @@ main .main-inner section {
 	margin-right: 1rem;
 }
 .trending-section li.nav-item button {
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	border-radius: 100vw;
 	line-height: 1.6;
 	color: var(--dark);
+	transition: 250ms ease-in-out;
+}
+.trending-section li.nav-item button:hover {
+	background-color: var(--primary-clr-opacity);
 }
 @media screen and (min-width: 425px) {
 	.trending-section li.nav-item button {
@@ -261,4 +266,19 @@ main .main-inner section {
 }
 .trending-section .tab-content {
 	margin-top: 2rem;
+}
+.swiper-slide li {
+	max-width: 300px;
+	border-radius: 8px;
+	aspect-ratio: 1 / 1.5;
+	height: auto;
+}
+.swiper-slide li a > div {
+	overflow: hidden;
+}
+.swiper-slide li img {
+	transition: all 280ms ease;
+}
+.swiper-slide li:hover img {
+	scale: 1.15;
 }

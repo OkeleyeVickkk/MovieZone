@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="./css/nav.css" />
 		<link rel="stylesheet" href="./css/footer.css" />
 		<link rel="stylesheet" href="./css/basestyle.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
 		<title>Home</title>
 	</head>
 	<body>
@@ -162,12 +164,12 @@
 									<!-- each movie end -->
 								</template>
 								<!-- skeleton template start -->
-								<template class="skeleton-loader">
+								<template id="skeleton-loader">
 									<div class="skeleton-item-wrapper">
 										<div class="skeleton-image skeleton"></div>
 										<div>
 											<div class="skeleton-title skeleton"></div>
-											<div class="d-flex align-items-center justify-content-between mt-4">
+											<div class="d-flex align-items-center justify-content-between mt-3">
 												<div class="skeleton-release-date skeleton"></div>
 												<div class="skeleton-like skeleton"></div>
 											</div>
@@ -230,13 +232,187 @@
 									role="tabpanel"
 									aria-labelledby="pills-movies-tab"
 									tabindex="0">
-									<div class="movies-wrapper"></div>
+									<div class="movies-wrapper">
+										<!-- Slider main container -->
+										<div class="swiper">
+											<!-- Additional required wrapper -->
+											<div class="swiper-wrapper">
+												<!-- Slides -->
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/aliens.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/star-wars.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/joker.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/freeguy.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/jumanji.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+											</div>
+											<!-- If we need pagination -->
+											<div class="swiper-pagination"></div>
+
+											<!-- If we need navigation buttons -->
+											<div class="swiper-button-prev"></div>
+											<div class="swiper-button-next"></div>
+										</div>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-tv-shows" role="tabpanel" aria-labelledby="pills-tv-shows-tab" tabindex="0">
-									<div class="tv-shows-wrapper"></div>
+									<div class="tv-shows-wrapper">
+										<!-- Slider main container -->
+										<div class="swiper">
+											<!-- Additional required wrapper -->
+											<div class="swiper-wrapper">
+												<!-- Slides -->
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/aliens.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/star-wars.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/joker.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/freeguy.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/jumanji.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+											</div>
+											<!-- If we need pagination -->
+											<div class="swiper-pagination"></div>
+
+											<!-- If we need navigation buttons -->
+											<div class="swiper-button-prev"></div>
+											<div class="swiper-button-next"></div>
+										</div>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="pills-actors" role="tabpanel" aria-labelledby="pills-actors-tab" tabindex="0">
-									<div class="actors"></div>
+									<div class="actors">
+										<!-- Slider main container -->
+										<div class="swiper">
+											<!-- Additional required wrapper -->
+											<div class="swiper-wrapper">
+												<!-- Slides -->
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/aliens.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/star-wars.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/joker.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/freeguy.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+												<div class="swiper-slide">
+													<li>
+														<a href="">
+															<div class="actors-image">
+																<img src="./images/jumanji.jpg" alt="" class="img-fluid" />
+															</div>
+														</a>
+													</li>
+												</div>
+											</div>
+											<!-- If we need navigation buttons -->
+											<div class="swiper-button-prev"></div>
+											<div class="swiper-button-next"></div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</section>
@@ -280,6 +456,7 @@
 
 		<script src="./js/bootstrap.bundle.min.js"></script>
 		<script src="./js/splide.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 		<script src="./js/control.js"></script>
 	</body>
 </html>

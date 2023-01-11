@@ -1,3 +1,38 @@
+const swiper = new Swiper(".swiper", {
+	slidesPerView: 2,
+	spaceBetween: 24,
+	loop: true,
+	breakpoints: {
+		991: {
+			slidesPerView: 6,
+			spaceBetween: 20,
+		},
+		600: {
+			slidesPerView: 4,
+			spaceBetween: 22,
+		},
+		375: {
+			slidesPerView: 3,
+			spaceBetween: 18,
+		},
+	},
+
+	// Optional parameters
+	direction: "horizontal",
+	loop: true,
+
+	// Navigation arrows
+	navigation: {
+		nextEl: ".swiper-button-next",
+		prevEl: ".swiper-button-prev",
+	},
+
+	// And if we need scrollbar
+	scrollbar: {
+		el: ".swiper-scrollbar",
+	},
+});
+
 const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
 
 const movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
@@ -110,7 +145,7 @@ function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
 }
 
 function addSkeletonLoader() {
-	const skeletonItem = document.querySelector(".skeleton-loader");
+	const skeletonItem = document.getElementById("skeleton-loader");
 	const parent = document.querySelector(".all-sections > .movie-wrapper");
 	for (let i = 0; i < 10; i++) {
 		const cloneSkeletons = skeletonItem.content.cloneNode(true);
