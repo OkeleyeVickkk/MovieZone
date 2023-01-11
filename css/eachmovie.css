@@ -8,7 +8,9 @@
 	--skeleton-color-opacity: rgba(211, 216, 220, 0.1);
 	--border-clr: #0101012e;
 }
-
+* {
+	letter-spacing: -0.3px;
+}
 .movie-item > div {
 	row-gap: 3rem;
 }
@@ -23,7 +25,50 @@
 }
 @media screen and (min-width: 426px) {
 	.swiper {
-		max-width: 80%;
+		max-width: 75%;
 		margin-inline: auto;
 	}
+}
+.movie-details,
+.movie-overview {
+	display: flex;
+	flex-direction: column;
+}
+.movie-details {
+	row-gap: 4rem;
+}
+.movie-overview {
+	row-gap: 2rem;
+}
+.movie-overview .thriller {
+	overflow: hidden;
+}
+.movie-overview .thriller #thriller-video {
+	background-color: var(--skeleton-color);
+	border-radius: 12px;
+	width: 100%;
+	aspect-ratio: 16 /9;
+}
+/* other movie recommendations */
+.recommendations {
+	margin-top: 4rem;
+}
+.recommendations .grid-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	gap: 2rem;
+	margin-top: 1.8rem;
+}
+.grid-wrapper .grid-movie-item img {
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+	transition: 280ms ease-in-out;
+}
+
+.grid-wrapper .grid-movie-item:hover img {
+	scale: 1.1;
+	rotate: -3deg;
+}
+.grid-wrapper .grid-movie-item .title {
+	color: var(--dark);
 }

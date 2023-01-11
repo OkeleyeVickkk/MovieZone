@@ -169,6 +169,8 @@ main .main-inner section {
 	white-space: nowrap;
 }
 
+/* above should be fixed if deleted away from the dom */
+
 @media all and (max-width: 426px) {
 	html {
 		font-size: 15px;
@@ -236,7 +238,7 @@ main .main-inner section {
 	font-size: 1.4rem;
 }
 .trending-section ul.nav-pills {
-	border: 2px solid var(--border-clr);
+	border: 1px solid var(--border-clr);
 	width: max-content;
 	border-radius: 100vw;
 }
@@ -246,6 +248,7 @@ main .main-inner section {
 .trending-section li.nav-item button {
 	font-size: 0.9rem;
 	border-radius: 100vw;
+	line-height: 1.6;
 	color: var(--dark);
 }
 @media screen and (min-width: 425px) {

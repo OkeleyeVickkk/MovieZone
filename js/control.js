@@ -1,3 +1,11 @@
+var splide = new Splide(".splide", {
+	type: "loop",
+	perPage: 3,
+	perMove: 1,
+});
+
+splide.mount();
+
 // const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
 
 const movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
