@@ -14,7 +14,11 @@
 .movie-item > div {
 	row-gap: 3rem;
 }
-
+main .main-inner section {
+	padding: 4pc 0 0;
+	margin-bottom: 2rem;
+	scroll-snap-align: center;
+}
 .swiper {
 	aspect-ratio: 16 / 9;
 }
@@ -40,6 +44,9 @@
 .movie-overview {
 	row-gap: 2rem;
 }
+:is(.movie-summary p, .little-content > div span) {
+	font-size: 14px;
+}
 .movie-overview .thriller {
 	overflow: hidden;
 }
@@ -55,8 +62,8 @@
 }
 .recommendations .grid-wrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-	gap: 2rem;
+	grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+	gap: 1.2rem;
 	margin-top: 1.8rem;
 }
 .grid-wrapper .grid-movie-item img {
@@ -71,4 +78,39 @@
 }
 .grid-wrapper .grid-movie-item .title {
 	color: var(--dark);
+	word-wrap: break-word;
+}
+
+/* recommendation skeleton */
+.skeleton {
+	background-color: var(--skeleton-color);
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+}
+.skeleton-image {
+	aspect-ratio: 1 / 1.3;
+}
+.skeleton-title {
+	aspect-ratio: 16 / 9;
+	height: 14px;
+	margin-top: 10px;
+	width: 80%;
+}
+.skeleton::before {
+	content: "";
+	height: 100%;
+	position: absolute;
+	width: 35%;
+	transform-origin: bottom right;
+	animation: go-right 2s forwards infinite;
+	background-image: linear-gradient(90deg, var(--skeleton-color-opacity), #f8f8f8db, var(--skeleton-color-opacity));
+}
+@keyframes go-right {
+	0% {
+		transform: translateX(-100px);
+	}
+	100% {
+		transform: translateX(300%);
+	}
 }

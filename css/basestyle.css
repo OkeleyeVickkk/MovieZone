@@ -41,9 +41,6 @@
 	translate: -50% -50%;
 	z-index: 1;
 }
-main .main-inner {
-	scroll-snap-type: y mandatory;
-}
 main .main-inner section {
 	padding: 4pc 0 0;
 	margin-bottom: 2rem;
@@ -275,10 +272,31 @@ main .main-inner section {
 }
 .swiper-slide li a > div {
 	overflow: hidden;
+	border-radius: 8px;
 }
 .swiper-slide li img {
 	transition: all 280ms ease;
 }
 .swiper-slide li:hover img {
 	scale: 1.15;
+}
+.swiper-button-next,
+.swiper-button-prev {
+	background: url("https://api.iconify.design/ph/arrow-right.svg?color=%23e71d36") no-repeat center center / contain;
+	width: 2.1rem !important;
+	height: 2.1rem !important;
+	padding: 10px;
+	border-radius: 100vw;
+	background-color: rgba(255 255 255 / 0.5);
+	backdrop-filter: blur(2px);
+	transition: 280ms ease-in-out;
+}
+.swiper-button-prev {
+	rotate: 180deg;
+}
+:is(.swiper-button-next, .swiper-button-prev)::after {
+	display: none;
+}
+:is(.swiper-button-next, .swiper-button-prev):hover {
+	background-color: var(--primary-clr-opacity);
 }
