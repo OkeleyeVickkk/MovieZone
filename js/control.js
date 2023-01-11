@@ -111,9 +111,9 @@ function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
 
 function addSkeletonLoader() {
 	const skeletonItem = document.querySelector(".skeleton-loader");
-	const cloneSkeletons = skeletonItem.content.cloneNode(true);
 	const parent = document.querySelector(".all-sections > .movie-wrapper");
 	for (let i = 0; i < 10; i++) {
+		const cloneSkeletons = skeletonItem.content.cloneNode(true);
 		parent.appendChild(cloneSkeletons);
 	}
 }
