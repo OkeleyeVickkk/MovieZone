@@ -1,4 +1,4 @@
-const swiper = new Swiper(".swiper", {
+const swiper = new Swiper(".trending-section .swiper", {
 	slidesPerView: 2,
 	spaceBetween: 24,
 	loop: true,
@@ -13,6 +13,41 @@ const swiper = new Swiper(".swiper", {
 		},
 		375: {
 			slidesPerView: 3,
+			spaceBetween: 18,
+		},
+	},
+
+	// Optional parameters
+	direction: "horizontal",
+	loop: true,
+
+	// Navigation arrows
+	navigation: {
+		nextEl: ".swiper-button-next",
+		prevEl: ".swiper-button-prev",
+	},
+
+	// And if we need scrollbar
+	scrollbar: {
+		el: ".swiper-scrollbar",
+	},
+});
+
+const swiper2 = new Swiper(".tv-show .swiper", {
+	slidesPerView: 2,
+	spaceBetween: 24,
+	loop: true,
+	breakpoints: {
+		991: {
+			slidesPerView: 3,
+			spaceBetween: 22,
+		},
+		600: {
+			slidesPerView: 2,
+			spaceBetween: 22,
+		},
+		375: {
+			slidesPerView: 1,
 			spaceBetween: 18,
 		},
 	},
