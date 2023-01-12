@@ -35,7 +35,7 @@ body:has(.search-layer.active) {
 	translate: -2rem 2rem;
 }
 .search-layer .cancel-button button svg {
-	transition: all 280ms ease;
+	transition: all 280ms ease-in-out;
 	font-size: 3.4rem;
 	border-radius: 100vw;
 	padding: 0.2rem;

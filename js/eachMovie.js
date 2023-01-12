@@ -1,5 +1,7 @@
 const timeline = gsap.timeline();
 
+const formtitle = document.querySelector(".search-layer-inner h2");
+const formInput = document.querySelector(".search-layer-inner form .form-floating");
 const cancelButton = document.querySelector(".search-layer button");
 const searchButton = document.querySelector(".nav-theme .git-hub button");
 const searchLayer = document.querySelector(".search-layer");
@@ -38,8 +40,6 @@ function callSearchLayer(e) {
 	e.stopPropagation();
 	if (!searchLayer.classList.contains("active")) {
 		searchLayer.classList.add("active");
-		const formtitle = document.querySelector(".search-layer-inner h2");
-		const formInput = document.querySelector(".search-layer-inner form .form-floating");
 		timeline
 			.from(searchLayer, {
 				xPercent: "100",
