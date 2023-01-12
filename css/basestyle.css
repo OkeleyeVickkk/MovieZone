@@ -99,7 +99,7 @@ main .main-inner section {
 }
 .all-sections .movie-wrapper {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	margin-top: 3rem;
 	gap: 2rem;
 }
@@ -299,4 +299,9 @@ main .main-inner section {
 }
 :is(.swiper-button-next, .swiper-button-prev):hover {
 	background-color: var(--primary-clr-opacity);
+}
+
+/* tv-show */
+section.tv-show {
+	background-color: red;
 }

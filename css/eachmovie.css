@@ -49,6 +49,11 @@ body:has(.search-layer.active) {
 	width: 70%;
 	margin-inline: auto;
 }
+@media screen and (max-width: 600px) {
+	.search-layer-inner {
+		margin-top: 40%;
+	}
+}
 .search-layer-inner h2 {
 	color: var(--white);
 	font-size: 2rem;
