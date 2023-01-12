@@ -19,10 +19,10 @@ body:has(.search-layer.active) {
 	overflow-y: hidden;
 }
 .search-layer {
-	/* display: none; */
+	display: none;
 	inset: 0;
 	z-index: 190;
-	background-color: rgba(0 0 0 / 93%);
+	background-color: rgba(0 0 0 / 80%);
 	overflow: hidden;
 	height: 100%;
 }
@@ -51,6 +51,7 @@ body:has(.search-layer.active) {
 .search-layer-inner h2 {
 	color: var(--white);
 	font-size: 2rem;
+	position: relative;
 }
 .search-layer-inner form .form-floating {
 	margin-top: 2.5rem;
