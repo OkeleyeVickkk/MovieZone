@@ -340,6 +340,27 @@ main .main-inner section:not(section.image-background) {
 	overflow: hidden;
 	border-radius: 8px;
 	margin-inline: auto;
+	position: relative;
+}
+.tv-show .swiper .tv-image .before {
+	position: absolute;
+	inset: 0;
+	background-color: rgba(0 0 0 / 40%);
+	transition: 280ms ease-out;
+	display: grid;
+	place-content: center;
+	transform: translateY(100%);
+}
+.tv-show .swiper li:hover .before {
+	transform: translateY(0);
+}
+.tv-show .swiper .before svg {
+	font-size: 1.7rem;
+	color: var(--white);
+	transition: 280ms ease-in-out;
+}
+.tv-show .swiper li .before svg:hover {
+	color: var(--primary-clr);
 }
 .tv-show .swiper .tv-image img {
 	aspect-ratio: 17 / 9;

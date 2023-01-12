@@ -101,7 +101,10 @@ main .main-inner section {
 }
 @media screen and (max-width: 425px) {
 	.swiper {
-		max-width: 90%;
+		max-width: 80%;
+	}
+	.search-layer-inner h2 {
+		font-size: 1.3rem;
 	}
 }
 @media screen and (min-width: 426px) {
