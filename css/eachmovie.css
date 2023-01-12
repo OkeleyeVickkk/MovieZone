@@ -11,6 +11,46 @@
 * {
 	letter-spacing: -0.3px;
 }
+
+.search-layer {
+	inset: 0;
+	z-index: 190;
+	background-color: rgba(0 0 0 / 90%);
+	overflow: hidden;
+	height: 100%;
+}
+.search-layer-inner {
+	margin-top: 16%;
+	width: 70%;
+	margin-inline: auto;
+}
+.search-layer-inner h2 {
+	color: var(--white);
+	font-size: 2rem;
+}
+.search-layer-inner form .form-floating {
+	margin-top: 2.5rem;
+}
+.search-layer-inner form .form-control {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid var(--white);
+	border-radius: 0;
+	font-size: 1.4rem;
+	color: var(--white);
+}
+.search-layer-inner form .form-control:focus {
+	box-shadow: none;
+}
+.search-layer-inner form .form-control:focus + label {
+	color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+	.search-layer-inner form .form-control:focus {
+		border-color: var(--primary-clr);
+	}
+}
 .movie-item > div {
 	row-gap: 3rem;
 }
