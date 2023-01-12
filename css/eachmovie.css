@@ -57,28 +57,52 @@ main .main-inner section {
 	aspect-ratio: 16 /9;
 }
 /* other movie recommendations */
-.recommendations {
+:is(.recommendations, .casts) {
 	margin-top: 4rem;
 }
-.recommendations .grid-wrapper {
+:is(.recommendations, .casts) .grid-wrapper {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
 	gap: 1.2rem;
 	margin-top: 1.8rem;
 }
-.grid-wrapper .grid-movie-item img {
+.grid-wrapper :is(.grid-movie-item, .grid-cast-item) img {
 	aspect-ratio: 3 / 4;
 	object-fit: cover;
 	transition: 280ms ease-in-out;
 }
-
+.grid-wrapper .grid-cast-image {
+	position: relative;
+}
+.grid-wrapper .grid-cast-image .link-layer {
+	inset: 0;
+	background-color: rgba(0 0 0 / 50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 200ms ease;
+	transform: scaleY(0);
+	transform-origin: bottom;
+}
+.grid-wrapper .grid-cast-item:hover .link-layer {
+	transform: scaleY(1);
+}
+.grid-wrapper .link-layer svg {
+	font-size: 2rem;
+	color: var(--white);
+	transition: color 300ms ease;
+}
+.grid-wrapper .link-layer svg:hover {
+	color: var(--primary-clr);
+}
 .grid-wrapper .grid-movie-item:hover img {
 	scale: 1.1;
 	rotate: -3deg;
 }
-.grid-wrapper .grid-movie-item .title {
+.grid-wrapper :is(.grid-movie-item, .grid-cast-item) :is(.title, .name) {
 	color: var(--dark);
 	word-wrap: break-word;
+	margin-top: 5px;
 }
 
 /* recommendation skeleton */
