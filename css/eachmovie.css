@@ -11,13 +11,37 @@
 * {
 	letter-spacing: -0.3px;
 }
-
+/* check if the form is active and give the button overflow of hidden */
+body {
+	transition: 290ms ease;
+}
+body:has(.search-layer.active) {
+	overflow-y: hidden;
+}
 .search-layer {
+	/* display: none; */
 	inset: 0;
 	z-index: 190;
-	background-color: rgba(0 0 0 / 90%);
+	background-color: rgba(0 0 0 / 93%);
 	overflow: hidden;
 	height: 100%;
+}
+.search-layer .cancel-button button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: var(--white);
+	translate: -2rem 2rem;
+}
+.search-layer .cancel-button button svg {
+	transition: all 280ms ease;
+	font-size: 3.4rem;
+	border-radius: 100vw;
+	padding: 0.2rem;
+}
+.search-layer .cancel-button button:hover svg {
+	backdrop-filter: blur(2px);
+	background-color: rgba(255 255 255 / 10%);
 }
 .search-layer-inner {
 	margin-top: 16%;

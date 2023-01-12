@@ -86,6 +86,17 @@ header nav:not(:has(.home)) {
 header nav:not(:has(.home)) ._nav-links a {
 	color: var(--dark);
 }
+header nav:has(button) button {
+	color: var(--white);
+}
+header nav:has(button) button svg {
+	font-size: 1.6rem;
+	transition: 280ms ease-in;
+	margin-top: 0.2rem;
+}
+header nav:has(button) button:hover svg {
+	color: var(--primary-clr);
+}
 @media all and (max-width: 600px) {
 	header nav {
 		padding: 1.3rem 0.8rem;
@@ -98,11 +109,18 @@ header nav .nav-theme {
 	column-gap: 2rem;
 	justify-content: flex-end;
 }
+header nav .nav-theme .git-hub {
+	column-gap: 1.5rem;
+}
 header nav .nav-theme .git-hub em {
 	font-size: 2rem;
 	cursor: pointer;
 	line-height: 1;
 	color: var(--white);
+	transition: color 280ms ease;
+}
+header nav .nav-theme .git-hub em:hover {
+	color: var(--primary-clr);
 }
 header nav:not(:has(.home)) .git-hub em {
 	color: var(--dark);
