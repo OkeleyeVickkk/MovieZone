@@ -231,9 +231,23 @@ function pasteShowsToScreen(tvShows) {
 		clonedTemplate.querySelector(".tv-image img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
 		clonedTemplate.querySelector(".swiper-slide .after h5").textContent = vote_average;
 		clonedTemplate.querySelector(".swiper-slide .show-name h6").textContent = name;
+		clonedTemplate.querySelector(".swiper-slide li").setAttribute("poster-link", poster_path ?? backdrop_path);
 
 		// paste to the screen
 		sliderWrapper.appendChild(clonedTemplate);
 	});
+	const posterBg = document.querySelector(".tv-show .image-background");
+	const allslider = document.querySelectorAll(".tv-show .swiper-slide");
+	allslider.forEach((slide) => {
+		const poster_path = slide.querySelector("li").getAttribute("poster-link");
+		slide.addEventListener("mouseenter", () => {
+			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
+		});
+	});
 }
-function pasteMoviesToScreen(movies) {}
+function pasteMoviesToScreen(movies) {
+	const {
+		value: { results },
+	} = movies;
+	// const
+}
