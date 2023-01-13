@@ -272,9 +272,9 @@ function pasteMoviesToScreen(movies) {
 		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
 		const { backdrop_path, id, title, poster_path, vote_average } = result;
 
-		clonedTemplate.querySelector("a.each-movie").href = `./movie.html/?id=${id}`;
+		clonedTemplate.querySelector("a.each-movie").href = `./movie.html?id=${id}`;
 		clonedTemplate.querySelector(".each-movie-inner img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
-		// clonedTemplate.querySelector(".swiper-slide .after h5").textContent = vote_average;
+		clonedTemplate.querySelector(".each-movie .vote").textContent = vote_average;
 		clonedTemplate.querySelector(".each-movie .movie-title").innerHTML = title;
 
 		// paste to the screen
