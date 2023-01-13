@@ -103,16 +103,6 @@ main .main-inner section:not(section.image-background) {
 	margin-top: 3rem;
 	gap: 2rem;
 }
-@media all and (max-width: 768px) {
-	.all-sections .movie-wrapper {
-		grid-template-columns: repeat(3, 1fr);
-	}
-}
-@media all and (max-width: 600px) {
-	.all-sections .movie-wrapper {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
 
 .all-sections .section-header a {
 	color: var(--primary-clr);
@@ -317,7 +307,7 @@ main .main-inner section:not(section.image-background) {
 .tv-show .image-background::before {
 	position: absolute;
 	inset: 0;
-	background-color: rgba(0 0 0 / 80%);
+	background-color: rgba(0 0 0 / 70%);
 	content: "";
 }
 .tv-show .image-background > div {

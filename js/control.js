@@ -1,7 +1,6 @@
 new Swiper(".trending-section .swiper", {
 	slidesPerView: 2,
 	spaceBetween: 24,
-	loop: true,
 	breakpoints: {
 		991: {
 			slidesPerView: 6,
@@ -181,17 +180,6 @@ function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
 	movieWrapper.innerHTML += item;
 }
 
-// add skeleton loader
-function addSkeletonLoader() {
-	const skeletonItem = document.getElementById("skeleton-loader");
-	const parent = document.querySelector(".all-sections > .movie-wrapper");
-	for (let i = 0; i < 10; i++) {
-		const cloneSkeletons = skeletonItem.content.cloneNode(true);
-		parent.appendChild(cloneSkeletons);
-	}
-}
-addSkeletonLoader();
-
 async function fetchMedia(URL) {
 	const response = await fetch(URL, { method: "GET" });
 	if (!response.ok) throw " Error occured! ";
@@ -199,13 +187,17 @@ async function fetchMedia(URL) {
 	return datagotten;
 }
 
-// fetch movie
-const tvshows = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1`;
+// fetch tv shows
+const tvshows = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US`;
 const shows = fetchMedia(tvshows);
 
-// fetch tv shows
-const movies = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
-const $movies = fetchMedia(movies);
+// fetch movie
+const upcoming = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+const $movies = fetchMedia(upcoming);
+
+// fetch actors
+// const actors = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`;
+// const $actors = fetchMedia(actors);
 
 const mediaResults = [shows, $movies];
 
@@ -217,12 +209,16 @@ Promise.allSettled(mediaResults)
 	})
 	.catch((error) => console.log(error));
 
+addSkeletonLoader();
+
 function pasteShowsToScreen(tvShows) {
 	const {
 		value: { results },
 	} = tvShows;
+
 	const showTemplate = document.getElementById("tv-show-slide-item");
 	const sliderWrapper = document.querySelector(".tv-show .swiper-wrapper");
+
 	results.forEach((result) => {
 		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
 		const { backdrop_path, id, name, poster_path, vote_average } = result;
@@ -236,18 +232,64 @@ function pasteShowsToScreen(tvShows) {
 		// paste to the screen
 		sliderWrapper.appendChild(clonedTemplate);
 	});
+
+	const screenSizes = {
+		phone: 600,
+		tablet: 769,
+	};
+
 	const posterBg = document.querySelector(".tv-show .image-background");
 	const allslider = document.querySelectorAll(".tv-show .swiper-slide");
+	// get default first slide ==> allslider[0]
 	allslider.forEach((slide) => {
 		const poster_path = slide.querySelector("li").getAttribute("poster-link");
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
 		});
+
+		// check viewport width and do the background image change according to yadayada
+		// const mediaQuery = window.matchMedia(`(max-width: ${screenSizes.tablet}px)`);
+		// if (slide.classList.contains("swiper-slide-active")) {
+		// 	posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
+		// 	console.log(slide.classList);
+		// } else {
+		// 	console.log("It does not");
+		// }
 	});
 }
 function pasteMoviesToScreen(movies) {
 	const {
 		value: { results },
 	} = movies;
-	// const
+	addSkeletonLoader(results.length);
+
+	const showTemplate = document.getElementById("movie-item");
+	const parent = document.querySelector(".all-sections > .movie-wrapper");
+
+	parent.innerHTML = "";
+
+	results.forEach((result) => {
+		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
+		const { backdrop_path, id, title, poster_path, vote_average } = result;
+
+		clonedTemplate.querySelector("a.each-movie").href = `./movie.html/?id=${id}`;
+		clonedTemplate.querySelector(".each-movie-inner img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
+		// clonedTemplate.querySelector(".swiper-slide .after h5").textContent = vote_average;
+		clonedTemplate.querySelector(".each-movie .movie-title").innerHTML = title;
+
+		// paste to the screen
+		parent.appendChild(clonedTemplate);
+	});
+
+	const { backdrop_path, id, title, average, poster_path } = results;
+}
+
+// add skeleton loader
+function addSkeletonLoader(totalResult) {
+	const skeletonItem = document.getElementById("skeleton-loader");
+	const parent = document.querySelector(".all-sections > .movie-wrapper");
+	for (let i = 0; i < totalResult; i++) {
+		const cloneSkeletons = skeletonItem.content.cloneNode(true);
+		parent.appendChild(cloneSkeletons);
+	}
 }
