@@ -11,3 +11,20 @@ todos
 ==> plugins include
 1. Swiper js
 2. gsap 
+
+
+
+==>
+function to get date four months ago
+// const getDate = () => {
+// 	const date = new Date();
+// 	const currentMonth = date.getMonth() + 1;
+// 	let currentYear = date.getFullYear();
+// 	const day = date.getDay();
+
+// 	let fourMonthsAgo, year;
+// 	fourMonthsAgo = currentMonth < 4 ? 12 + (currentMonth - 4) : 1 + (currentMonth - 4);
+// 	year = fourMonthsAgo > 4 ? currentYear - 1 : currentYear;
+
+// };
+// getDate();

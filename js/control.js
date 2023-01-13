@@ -1,4 +1,4 @@
-const swiper = new Swiper(".trending-section .swiper", {
+new Swiper(".trending-section .swiper", {
 	slidesPerView: 2,
 	spaceBetween: 24,
 	loop: true,
@@ -33,8 +33,8 @@ const swiper = new Swiper(".trending-section .swiper", {
 	},
 });
 
-const swiper2 = new Swiper(".tv-show .swiper", {
-	slidesPerView: 2,
+new Swiper(".tv-show .swiper", {
+	slidesPerView: 1,
 	spaceBetween: 24,
 	loop: true,
 	breakpoints: {
@@ -68,7 +68,10 @@ const swiper2 = new Swiper(".tv-show .swiper", {
 	},
 });
 
+// <== ============ global variables  start =========== ==>
 const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
+const image_base_url = "https://image.tmdb.org/t/p/w1280/";
+// <== ============ global variables  start ends =========== ==>
 
 const movieWrapper = document.querySelector("section.all-sections .movie-wrapper");
 
@@ -82,7 +85,6 @@ function RandomPage() {
 }
 const randomNum = RandomPage();
 
-const image_base_url = "https://image.tmdb.org/t/p/w1280/";
 const LATEST_MOVIES_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${randomNum}&with_watch_monetization_types=flatrate`;
 
 document.addEventListener("DOMContentLoaded", GetGeneralMovies);
@@ -179,6 +181,7 @@ function Movie(title, vote_average, poster_path, release_date, backdrop_path) {
 	movieWrapper.innerHTML += item;
 }
 
+// add skeleton loader
 function addSkeletonLoader() {
 	const skeletonItem = document.getElementById("skeleton-loader");
 	const parent = document.querySelector(".all-sections > .movie-wrapper");
@@ -188,3 +191,46 @@ function addSkeletonLoader() {
 	}
 }
 addSkeletonLoader();
+
+async function fetchMedia(URL) {
+	const response = await fetch(URL, { method: "GET" });
+	if (!response.ok) throw " Error occured! ";
+	const datagotten = await response.json();
+	return datagotten;
+}
+
+// fetch movie
+const tvshows = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1`;
+const shows = fetchMedia(tvshows);
+
+// fetch tv shows
+const movies = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
+const $movies = fetchMedia(movies);
+
+const mediaResults = [shows, $movies];
+
+Promise.allSettled(mediaResults).then((results) => {
+	const [tvShows, movies] = [results[0], results[1]];
+	pasteShowsToScreen(tvShows);
+	pasteMoviesToScreen(movies);
+});
+
+function pasteShowsToScreen(tvShows) {
+	const {
+		value: { results },
+	} = tvShows;
+	const showTemplate = document.getElementById("tv-show-slide-item");
+	const sliderWrapper = document.querySelector(".tv-show .swiper-wrapper");
+	results.forEach((result) => {
+		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
+		const { backdrop_path, id, name, origin_country, poster_path, vote_average } = result;
+
+		clonedTemplate.querySelector(".swiper-slide a").href = `./tv-show.html/?id=${id}`;
+		clonedTemplate.querySelector(".tv-image img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
+		// clonedTemplate.querySelector(".")
+		// clonedTemplate.querySelector(".")
+
+		// paste to the screen
+	});
+}
+function pasteMoviesToScreen(movies) {}

@@ -2,13 +2,14 @@ const timeline = gsap.timeline();
 
 const formtitle = document.querySelector(".search-layer-inner h2");
 const formInput = document.querySelector(".search-layer-inner form .form-floating");
-const cancelButton = document.querySelector(".search-layer button");
+const cancelButton = document.querySelector(".search-layer .cancel-button button");
+const submitButton = document.querySelector(".search-layer-inner [type='submit']");
 const searchButton = document.querySelector(".nav-theme .git-hub button");
 const searchLayer = document.querySelector(".search-layer");
 cancelButton.addEventListener("click", cancelSearchLayer);
 searchButton.addEventListener("click", callSearchLayer);
 
-var swiper = new Swiper(".swiper", {
+const swiper = new Swiper(".swiper", {
 	effect: "cards",
 	grabCursor: true,
 });
@@ -56,7 +57,7 @@ function callSearchLayer(e) {
 				"<"
 			)
 			.from(
-				[formtitle, formInput],
+				[formtitle, formInput, submitButton],
 				{
 					y: 40,
 					opacity: 0,

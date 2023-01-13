@@ -362,7 +362,29 @@ main .main-inner section:not(section.image-background) {
 .tv-show .swiper li .before svg:hover {
 	color: var(--primary-clr);
 }
+.tv-show .swiper li {
+	position: relative;
+}
+/* .tv-show .swiper li .after {
+	width: 60px;
+	height: 60px;
+	padding: 5px;
+	border-radius: 100vw;
+	background-color: hotpink;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 50;
+	left: 2rem;
+} */
 .tv-show .swiper .tv-image img {
 	aspect-ratio: 17 / 9;
 	object-fit: cover;
+}
+.tv-show .swiper li a .show-name {
+	margin-top: 1rem;
+	word-wrap: break-word;
+}
+.tv-show .swiper li a .show-name h6 {
+	color: var(--white);
 }
