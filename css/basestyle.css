@@ -365,18 +365,17 @@ main .main-inner section:not(section.image-background) {
 .tv-show .swiper li {
 	position: relative;
 }
-/* .tv-show .swiper li .after {
-	width: 60px;
-	height: 60px;
-	padding: 5px;
-	border-radius: 100vw;
-	background-color: hotpink;
+.tv-show .swiper li .after {
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	justify-content: center;
-	z-index: 50;
-	left: 2rem;
-} */
+	color: var(--white);
+	margin-top: 5px;
+	gap: 3px;
+}
+.tv-show .swiper li .after h5 {
+	color: currentColor;
+}
 .tv-show .swiper .tv-image img {
 	aspect-ratio: 17 / 9;
 	object-fit: cover;

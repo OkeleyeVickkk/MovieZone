@@ -209,11 +209,13 @@ const $movies = fetchMedia(movies);
 
 const mediaResults = [shows, $movies];
 
-Promise.allSettled(mediaResults).then((results) => {
-	const [tvShows, movies] = [results[0], results[1]];
-	pasteShowsToScreen(tvShows);
-	pasteMoviesToScreen(movies);
-});
+Promise.allSettled(mediaResults)
+	.then((results) => {
+		const [tvShows, movies] = [results[0], results[1]];
+		pasteShowsToScreen(tvShows);
+		pasteMoviesToScreen(movies);
+	})
+	.catch((error) => console.log(error));
 
 function pasteShowsToScreen(tvShows) {
 	const {
@@ -223,14 +225,15 @@ function pasteShowsToScreen(tvShows) {
 	const sliderWrapper = document.querySelector(".tv-show .swiper-wrapper");
 	results.forEach((result) => {
 		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
-		const { backdrop_path, id, name, origin_country, poster_path, vote_average } = result;
+		const { backdrop_path, id, name, poster_path, vote_average } = result;
 
 		clonedTemplate.querySelector(".swiper-slide a").href = `./tv-show.html/?id=${id}`;
 		clonedTemplate.querySelector(".tv-image img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
-		// clonedTemplate.querySelector(".")
-		// clonedTemplate.querySelector(".")
+		clonedTemplate.querySelector(".swiper-slide .after h5").textContent = vote_average;
+		clonedTemplate.querySelector(".swiper-slide .show-name h6").textContent = name;
 
 		// paste to the screen
+		sliderWrapper.appendChild(clonedTemplate);
 	});
 }
 function pasteMoviesToScreen(movies) {}
