@@ -14,9 +14,6 @@ const swiper = new Swiper(".swiper", {
 	grabCursor: true,
 });
 
-// const searchParams = new URLSearchParams();
-// const getParams = searchParams.get();
-
 // add skeleton loader
 function addSkeletonLoader() {
 	const skeletonItem = document.getElementById("movies-recommendation");

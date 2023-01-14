@@ -142,6 +142,7 @@ main .main-inner section:not(section.image-background) {
 .movie-content .movie-title {
 	color: var(--dark);
 	font-weight: 600;
+	font-size: 0.9rem;
 }
 .movie-content em {
 	line-height: 1;
