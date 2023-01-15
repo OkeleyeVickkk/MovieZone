@@ -18,6 +18,25 @@ body {
 /* body:has(.search-layer.active) {
 	overflow-y: hidden;
 } */
+.banner .banner-image {
+	min-height: 450px;
+	background-repeat: no-repeat;
+	background-position: center 30%;
+	background-size: cover;
+	background-color: var(--primary-clr);
+	position: relative;
+}
+@media all and (min-width: 768px) {
+	.banner .banner-image {
+		min-height: 590px;
+	}
+}
+.banner .banner-image::before {
+	position: absolute;
+	inset: 0;
+	background-color: rgba(0 0 0 / 40%);
+	content: "";
+}
 .search-layer {
 	display: none;
 	inset: 0;
