@@ -1,5 +1,12 @@
 const timeline = gsap.timeline();
 
+// get the parameter in the url
+
+const queryId = window.location.search;
+
+const searchParams = new URLSearchParams(queryId);
+const movieId = searchParams.get("id");
+
 const formtitle = document.querySelector(".search-layer-inner h2");
 const formInput = document.querySelector(".search-layer-inner form .form-floating");
 const cancelButton = document.querySelector(".search-layer .cancel-button button");
