@@ -108,7 +108,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		} = response;
 
 		const movieImages = fetchMovieImages(id);
-		// const movieCasts = fetchMovieCasts();
+		// const movieCasts = fetchMovieCasts(id);
 		const movieSummary = document.querySelector(".movie-summary p");
 		const duration = document.querySelector(".little-content .runtime span .duration");
 		const releaseDate = document.querySelector(".little-content .release-date span .date");
@@ -117,11 +117,16 @@ window.addEventListener("DOMContentLoaded", function () {
 		const thriller = document.querySelector(".thriller #thriller-video");
 		const movieTitle = document.querySelector(".movie-details .title h3");
 		const bannerImage = document.querySelector(".banner .banner-image");
+		const moviePoster = document.querySelector(".movie-poster img");
 
 		const posterImages = document.querySelector(".posters-images #slide-template");
 
 		// paste them to the screen
-		bannerImage.style = `background-image: url(${image_base_url}${poster_path})`;
+		moviePoster.src = `${image_base_url}${backdrop_path}`;
+		bannerImage.style = `background-image: url(${image_base_url}${poster_path ?? backdrop_path})`;
+		movieTitle.innerHTML = `${title} <span class="text-sm"> ${tagline == "" ? "" : `: ${tagline}`}</span>`;
+		movieSummary.textContent = overview;
+		duration.textContent = runtime;
 	});
 
 	async function fetchMovieImages(id) {
@@ -132,7 +137,13 @@ window.addEventListener("DOMContentLoaded", function () {
 		console.log(data);
 	}
 
-	async function fetchMovieCasts(id) {
-		const movie_url = `https://api.themoviedb.org/3/movie/${movieId}/casts?api_key=${API_KEY}&language=en-US`;
-	}
+	// async function fetchMovieCasts(id) {
+	// 	const movie_url = `https://api.themoviedb.org/3/movie/${movieId}/casts?api_key=${API_KEY}&language=en-US`;
+	// 	const response = await fetch(movie_url);
+	// 	if (!response.ok) return "Error encountered!";
+	// 	const data = await response.json();
+	// 	console.log(data);
+	// }
+
+	// function runSearchQuery() {}
 });

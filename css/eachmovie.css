@@ -21,7 +21,7 @@ body {
 .banner .banner-image {
 	min-height: 450px;
 	background-repeat: no-repeat;
-	background-position: center 30%;
+	background-position: center 40%;
 	background-size: cover;
 	background-color: var(--primary-clr);
 	position: relative;
@@ -148,6 +148,9 @@ main .main-inner section {
 		max-width: 75%;
 		margin-inline: auto;
 	}
+	.movie-details h3 span {
+		font-size: 80%;
+	}
 }
 .movie-details,
 .movie-overview {
@@ -155,7 +158,7 @@ main .main-inner section {
 	flex-direction: column;
 }
 .movie-details {
-	row-gap: 4rem;
+	row-gap: 2.5rem;
 }
 .movie-overview {
 	row-gap: 2rem;
@@ -196,12 +199,12 @@ main .main-inner section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: all 200ms ease;
-	transform: scaleY(0);
+	transition: all 300ms ease;
+	transform: translateY(-100%);
 	transform-origin: bottom;
 }
 .grid-wrapper .grid-cast-item:hover .link-layer {
-	transform: scaleY(1);
+	transform: translateY(0);
 }
 .grid-wrapper .link-layer svg {
 	font-size: 2rem;
