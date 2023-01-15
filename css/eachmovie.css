@@ -15,9 +15,9 @@
 body {
 	transition: 290ms ease;
 }
-body:has(.search-layer.active) {
+/* body:has(.search-layer.active) {
 	overflow-y: hidden;
-}
+} */
 .search-layer {
 	display: none;
 	inset: 0;

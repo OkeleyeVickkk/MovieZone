@@ -127,7 +127,7 @@ function pasteShowsToScreen(tvShows) {
 		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
 		const { backdrop_path, id, name, poster_path, vote_average } = result;
 
-		clonedTemplate.querySelector(".swiper-slide a").href = `./tv-show.html/?id=${id}`;
+		clonedTemplate.querySelector(".swiper-slide a").href = `./tv-show.html?id=${id}`;
 		clonedTemplate.querySelector(".tv-image img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
 		clonedTemplate.querySelector(".swiper-slide .after h5").textContent = vote_average;
 		clonedTemplate.querySelector(".swiper-slide .show-name h6").textContent = name;

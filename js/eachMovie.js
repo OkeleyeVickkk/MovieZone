@@ -1,3 +1,8 @@
+// <== ============ global variables  start =========== ==>
+const API_KEY = "ffdcbd3cebcd836ef5c1b4b04f8bb42f";
+const image_base_url = "https://image.tmdb.org/t/p/w1280/";
+// <== ============ global variables  start ends =========== ==>
+
 const timeline = gsap.timeline();
 
 // get the parameter in the url
@@ -70,4 +75,55 @@ function callSearchLayer(e) {
 				"<0.45"
 			);
 	}
+}
+
+async function fetchMedia(URL) {
+	if (!movieId) return;
+	const response = await fetch(URL, { method: "GET" });
+	if (!response.ok) throw " Error occured! ";
+	const datagotten = await response.json();
+	return datagotten;
+}
+
+// fetch tv shows
+const movie = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
+const movieDetail = fetchMedia(movie);
+
+movieDetail.then((response) => {
+	console.log(response);
+	const {
+		backdrop_path,
+		release_date,
+		poster_path,
+		runtime,
+		overview,
+		title,
+		video,
+		vote,
+		tagline,
+		id,
+		spoken_languages: { ...name },
+		genres: [...names],
+	} = response;
+
+	const movieImages = fetchMovieImages(id);
+	const movieCasts = fetchMovieCasts();
+	const movieSummary = document.querySelector(".movie-summary p");
+	const duration = document.querySelector(".little-content .runtime span .duration");
+	const releaseDate = document.querySelector(".little-content .release-date span .date");
+	const language = document.querySelector(".little-content .lang span .language");
+	const genre = document.querySelector(".little-content .genre span .genres");
+	const thriller = document.querySelector(".thriller #thriller-video");
+	const movieTitle = document.querySelector(".movie-details .title h3");
+	const bannerImage = document.querySelector(".banner .banner-image img");
+
+	const posterImages = document.querySelector(".posters-images #slide-template");
+});
+
+async function fetchMovieImages(id) {
+	const movie_url = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=<<api_key>>&language=en-US`;
+}
+
+async function fetchMovieCasts(id) {
+	const movie_url = `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${API_KEY}&language=en-US`;
 }
