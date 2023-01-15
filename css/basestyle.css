@@ -124,11 +124,8 @@ main .main-inner section:not(section.image-background) {
 }
 .movie-wrapper .each-movie img {
 	object-fit: cover;
+	aspect-ratio: 16 / 10;
 }
-/* .each-movie-inner {
-	display: flex;
-	flex-direction: column;
-} */
 .each-movie-inner .movie-content {
 	padding: 1rem 10px;
 	display: flex;

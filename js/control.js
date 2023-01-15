@@ -176,7 +176,6 @@ function pasteMoviesToScreen(movies) {
 		const { backdrop_path, id, title, poster_path, vote_average, release_date } = result;
 
 		const date = getProperDate(release_date);
-		console.log(date);
 		clonedTemplate.querySelector("a.each-movie").href = `./movie.html?id=${id}`;
 		clonedTemplate.querySelector(".each-movie-inner img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
 		clonedTemplate.querySelector(".each-movie .vote").textContent = vote_average;
