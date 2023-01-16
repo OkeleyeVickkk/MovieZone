@@ -107,8 +107,9 @@ window.addEventListener("DOMContentLoaded", function () {
 			genres: [...names],
 		} = response;
 
-		const movieImages = fetchMovieImages(id);
-		// const movieCasts = fetchMovieCasts(id);
+		// const movieImages = fetchMovieImages(id);
+		fetchMovieCasts(id);
+		const similarMovies = fetchSimilarMovies(id);
 		const movieSummary = document.querySelector(".movie-summary p");
 		const duration = document.querySelector(".little-content .runtime span .duration");
 		const releaseDate = document.querySelector(".little-content .release-date span .date");
@@ -129,23 +130,50 @@ window.addEventListener("DOMContentLoaded", function () {
 		duration.textContent = runtime;
 	});
 
-	async function fetchMovieImages(id) {
-		const movie_url = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}&language=en-US`;
-		const response = await fetch(movie_url);
-		if (!response.ok) return "Error encountered!";
-		const data = await response.json();
-		console.log(data);
-	}
-
-	// async function fetchMovieCasts(id) {
-	// 	const movie_url = `https://api.themoviedb.org/3/movie/${movieId}/casts?api_key=${API_KEY}&language=en-US`;
+	// async function fetchMovieImages(id) {
+	// 	const movie_url = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}&language=en-US`;
 	// 	const response = await fetch(movie_url);
-	// 	if (!response.ok) return "Error encountered!";
+	// 	if (!response.ok || !response.status === 200) throw "Error occured";
 	// 	const data = await response.json();
-	// 	console.log(data);
 	// }
+
+	async function fetchMovieCasts(id) {
+		const movie_url = `https://api.themoviedb.org/3/movie/${id}/casts?api_key=${API_KEY}&language=en-US`;
+		const response = await fetch(movie_url);
+		if (!response.ok || !response.status === 200) throw "Error occured";
+		const casts = await response.json();
+
+		// get the dom
+		const castTemplate = document.getElementById("cast-template");
+		const castswrapper = document.querySelector(".casts .grid-wrapper");
+		// filter casts with images
+		const res = casts.cast.filter((cast) => {
+			const { profile_path } = cast;
+			return profile_path != null;
+		});
+
+		res.splice(0, 10).forEach((cast) => {
+			const clonedTemplate = castTemplate.content.cloneNode(true);
+
+			const { name, id, profile_path } = cast;
+
+			clonedTemplate.querySelector(".grid-cast-item a").href = `./cast.html?${id}`;
+			clonedTemplate.querySelector(".grid-cast-item").id = id;
+			clonedTemplate.querySelector(".grid-cast-image img").src = `${image_base_url}${profile_path}`;
+			clonedTemplate.querySelector(".grid-cast-item .name").textContent = name;
+
+			// paste to the screen
+			castswrapper.appendChild(clonedTemplate);
+		});
+	}
 
 	// function runSearchQuery() {}
 
-	// fetchmovieRecommendation(){}
+	async function fetchSimilarMovies(id) {
+		const url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
+		const response = await fetch(url);
+		if (!response.ok || !response.status === 200) throw "Error occured";
+		const results = await response.json();
+		console.log(results);
+	}
 });
