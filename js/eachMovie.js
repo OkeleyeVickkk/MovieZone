@@ -122,7 +122,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		const posterImages = document.querySelector(".posters-images #slide-template");
 
 		// paste them to the screen
-		moviePoster.src = `${image_base_url}${backdrop_path}`;
+		moviePoster.src = `${image_base_url}${backdrop_path ?? poster_path}`;
 		bannerImage.style = `background-image: url(${image_base_url}${poster_path ?? backdrop_path})`;
 		movieTitle.innerHTML = `${title} <span class="text-sm"> ${tagline == "" ? "" : `: ${tagline}`}</span>`;
 		movieSummary.textContent = overview;
@@ -146,4 +146,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	// }
 
 	// function runSearchQuery() {}
+
+	// fetchmovieRecommendation(){}
 });

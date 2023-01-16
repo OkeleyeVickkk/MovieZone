@@ -150,15 +150,6 @@ function pasteShowsToScreen(tvShows) {
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
 		});
-
-		// check viewport width and do the background image change according to yadayada
-		// const mediaQuery = window.matchMedia(`(max-width: ${screenSizes.tablet}px)`);
-		// if (slide.classList.contains("swiper-slide-active")) {
-		// 	posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
-		// 	console.log(slide.classList);
-		// } else {
-		// 	console.log("It does not");
-		// }
 	});
 }
 function pasteMoviesToScreen(movies) {
