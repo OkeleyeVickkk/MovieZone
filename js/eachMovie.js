@@ -22,27 +22,16 @@ window.addEventListener("DOMContentLoaded", function () {
 	cancelButton.addEventListener("click", cancelSearchLayer);
 	searchButton.addEventListener("click", callSearchLayer);
 
-	const swiper = new Swiper(".swiper", {
+	new Swiper(".swiper", {
 		effect: "cards",
 		grabCursor: true,
 	});
-
-	// add skeleton loader
-	function addSkeletonLoader() {
-		const skeletonItem = document.getElementById("movies-recommendation");
-		const parent = document.querySelector(".recommendations .grid-wrapper");
-		for (let i = 0; i < 8; i++) {
-			const cloneSkeletons = skeletonItem.content.cloneNode(true);
-			parent.appendChild(cloneSkeletons);
-		}
-	}
-	addSkeletonLoader();
 
 	// toggle search button
 	function cancelSearchLayer(e) {
 		e.stopPropagation();
 		if (searchLayer.classList.contains("active")) {
-			gsap.to(searchLayer, { display: "none", xPercent: "100", yPercent: "-100", ease: "linear", scale: 0 });
+			gsap.to(searchLayer, { display: "none", xPercent: "100", yPercent: "-100", ease: "linear" });
 			searchLayer.classList.remove("active");
 		}
 	}
@@ -109,7 +98,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 		// const movieImages = fetchMovieImages(id);
 		fetchMovieCasts(id);
-		const similarMovies = fetchSimilarMovies(id);
+		fetchSimilarMovies(id);
 		const movieSummary = document.querySelector(".movie-summary p");
 		const duration = document.querySelector(".little-content .runtime span .duration");
 		const releaseDate = document.querySelector(".little-content .release-date span .date");
@@ -148,6 +137,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		const castswrapper = document.querySelector(".casts .grid-wrapper");
 		// filter casts with images
 		const res = casts.cast.filter((cast) => {
+			console.log(cast);
 			const { profile_path } = cast;
 			return profile_path != null;
 		});
@@ -170,17 +160,32 @@ window.addEventListener("DOMContentLoaded", function () {
 	// function runSearchQuery() {}
 
 	async function fetchSimilarMovies(id) {
+		// get the dom
+		const skeletonItem = document.getElementById("movies-recommendation");
+		const parent = document.querySelector(".recommendations .grid-wrapper");
+
 		const url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 		const response = await fetch(url);
+		for (let i = 0; i < 10; i++) {
+			const cloneSkeletons = skeletonItem.content.cloneNode(true);
+			parent.appendChild(cloneSkeletons);
+		}
 		if (!response.ok || !response.status === 200) throw "Error occured";
 		const movies = await response.json();
+		const firstTenMovies = movies.results.splice(0, 10);
 
-		// get the dom
+		parent.innerHTML = "";
 		const movieTemplate = document.getElementById("movieTemplate");
 
-		movies.results.splice(0, 10).forEach((movie) => {
-			const $movieTemplate = movieTemplate.content.cloneNode(true);
+		firstTenMovies.forEach((movie) => {
+			const _movieTemplate = movieTemplate.content.cloneNode(true);
 			const { backdrop_path, poster_path, title, id } = movie;
+
+			_movieTemplate.querySelector(".grid-movie-item a").href = `/movie.html?id=${id}`;
+			_movieTemplate.querySelector(".grid-movie-image img").src = `${image_base_url}${poster_path ?? backdrop_path}`;
+			_movieTemplate.querySelector(".grid-movie-item .title small").textContent = title;
+
+			parent.append(_movieTemplate);
 		});
 	}
 });
