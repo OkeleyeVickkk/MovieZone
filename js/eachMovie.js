@@ -173,7 +173,14 @@ window.addEventListener("DOMContentLoaded", function () {
 		const url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 		const response = await fetch(url);
 		if (!response.ok || !response.status === 200) throw "Error occured";
-		const results = await response.json();
-		console.log(results);
+		const movies = await response.json();
+
+		// get the dom
+		const movieTemplate = document.getElementById("movieTemplate");
+
+		movies.results.splice(0, 10).forEach((movie) => {
+			const $movieTemplate = movieTemplate.content.cloneNode(true);
+			const { backdrop_path, poster_path, title, id } = movie;
+		});
 	}
 });
