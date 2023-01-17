@@ -107,5 +107,120 @@
 }
 
 main {
-	padding-top: 7.5rem;
+	padding: 7.5rem 0 3rem;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+main .movie-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 2rem;
+}
+
+.movie-wrapper .each-movie {
+	color: var(--dark);
+}
+.movie-wrapper .each-movie:hover {
+	scale: 1.02;
+}
+.movie-wrapper .movie-image-wrapper {
+	position: relative;
+	width: 100%;
+}
+.movie-wrapper .movie-image-wrapper-inner {
+	border-radius: 8px;
+	overflow: hidden;
+}
+.movie-wrapper .movie-image-wrapper .vote-average {
+	bottom: -1rem;
+	right: 1rem;
+	color: var(--white);
+	border-radius: 100vw;
+	aspect-ratio: 1 / 1;
+	/* backdrop-filter: blur(0.5px); */
+	border: 2px solid var(--primary-clr);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	/* From https://css.glass */
+	background: rgba(231, 29, 54, 0.26);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(6.5px);
+	/* border: 1px solid rgba(231, 29, 54, 0.09); */
+}
+.movie-wrapper .each-movie img {
+	object-fit: cover;
+	aspect-ratio: 16 / 10;
+	position: relative;
+}
+.each-movie-inner .movie-content {
+	padding: 1rem 10px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	color: var(--light-dark);
+}
+.movie-content .movie-title {
+	color: var(--dark);
+	font-weight: 600;
+	font-size: 0.9rem;
+}
+.movie-content svg {
+	line-height: 1;
+	display: flex;
+	color: var(--primary-clr);
+	font-size: 1rem;
+}
+.movie-content .inner-content .right {
+	column-gap: 0.8em;
+}
+.movie-content :is(.rating, .movie-length) {
+	column-gap: 3px;
+	white-space: nowrap;
+}
+
+/* skeleton loader */
+.skeleton {
+	background-color: var(--skeleton-color);
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+}
+.skeleton-image {
+	aspect-ratio: 1 / 1;
+}
+.skeleton-title {
+	aspect-ratio: 16 / 9;
+	height: 20px;
+	margin-top: 10px;
+	width: 80%;
+}
+.skeleton-release-date {
+	width: 50%;
+	height: 0.8rem;
+}
+.skeleton-like {
+	height: 0.8rem;
+	width: 20%;
+}
+.skeleton::before {
+	content: "";
+	height: 100%;
+	position: absolute;
+	width: 35%;
+	transform-origin: bottom right;
+	animation: go-right 2s forwards infinite;
+	background-image: linear-gradient(90deg, var(--skeleton-color-opacity), #f8f8f8db, var(--skeleton-color-opacity));
+}
+@keyframes go-right {
+	0% {
+		transform: translateX(-100px);
+	}
+	100% {
+		transform: translateX(300%);
+	}
 }

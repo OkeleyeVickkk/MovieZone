@@ -56,11 +56,20 @@ function callSearchLayer(e) {
 }
 
 const searchMovie = async () => {
-	const url = `https://api.themoviedb.org/3/search/movie?query=porn&api_key=${API_KEY}&language=en-US`;
-	const response = await this.fetch(url);
-	const video = await response.json();
-	console.log(video);
+	const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`;
+	const response = await fetch(url);
+	if (!response.ok) throw " Error occured! ";
+	const skeletonItem = document.getElementById("skeleton-loader");
+	const parent = document.querySelector(".movie-wrapper");
+	const data = await response.json();
+	for (let i = 0; i < data.results.length; i++) {
+		const cloneSkeletons = skeletonItem.content.cloneNode(true);
+		parent.appendChild(cloneSkeletons);
+	}
+	console.log(data);
 };
 
+searchMovie();
 // read more function
 // searc function
+// intersect observer
