@@ -79,6 +79,13 @@ main .main-inner section {
 :is(.movie-summary p, .little-content > div span) {
 	font-size: 14px;
 }
+.little-content .badge {
+	padding: 6px 1rem;
+	border-radius: 3px;
+	margin: 0 1px 0 0;
+	font-size: 12px;
+	font-weight: 500;
+}
 .movie-overview .thriller {
 	overflow: hidden;
 }

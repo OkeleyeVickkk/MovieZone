@@ -246,6 +246,7 @@ main .movie-wrapper {
 }
 .read_more button {
 	font-size: 0.9rem;
+	opacity: 0;
 	background-color: var(--primary-clr);
 	color: var(--white);
 	border-radius: 100vw;

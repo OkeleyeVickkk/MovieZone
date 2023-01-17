@@ -65,6 +65,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		movieTitle.innerHTML = `${title} <span class="text-sm"> ${tagline == "" ? "" : `: ${tagline}`}</span>`;
 		movieSummary.textContent = overview;
 		duration.textContent = runtime;
+		releaseDate.textContent = getProperDate(release_date);
 	});
 
 	async function fetchMovieCasts(id) {
@@ -125,5 +126,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
 			parent.append(_movieTemplate);
 		});
+	}
+
+	function getProperDate(date) {
+		const dateArray = date.split("-");
+		const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		let response = `${dateArray[2]}, ${months[parseInt(dateArray[1]) - 1]} ${dateArray[0]}`;
+		return response;
 	}
 });

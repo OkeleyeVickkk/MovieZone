@@ -70,7 +70,6 @@ let defaultPageNumber = 1;
 
 function readMore(e) {
 	e.stopPropagation();
-
 	// const skeletonItem = document.getElementById("skeleton-loader");
 	// const parent = document.querySelector(".movie-wrapper");
 	// for (let i = 0; i < 20; i++) {
@@ -102,6 +101,7 @@ const searchMovie = async (num) => {
 		clone.querySelector(".movie-content .date span").textContent = getProperDate(release_date);
 
 		parent.append(clone); //paste to the screen
+		readMoreButton.style = `opacity: 1`;
 	});
 
 	function filterVoteAverage(vote_average) {
