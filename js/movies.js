@@ -17,12 +17,15 @@ const scrollToTopButton = document.querySelector(".scroll-to-top");
 cancelButton.addEventListener("click", cancelSearchLayer);
 searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
+scrollToTopButton.addEventListener("click", scrollToTop);
 
 gsap.to(scrollToTopButton, {
 	y: -25,
 	yoyo: true,
 	repeat: -1,
 });
+
+function scrollToTop() {}
 
 function cancelSearchLayer(e) {
 	e.stopPropagation();
@@ -121,6 +124,6 @@ const searchMovie = async (num) => {
 
 searchMovie();
 // read more function ✅
-// search function
 // intersect observer
 // scroll to top function
+// search function

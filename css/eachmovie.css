@@ -89,7 +89,7 @@ main .main-inner section {
 	aspect-ratio: 16 /9;
 }
 /* other movie recommendations */
-:is(.recommendations, .casts) {
+:is(.recommendations, .movie-details) {
 	margin-top: 4rem;
 }
 :is(.recommendations, .casts) .grid-wrapper {

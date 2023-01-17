@@ -97,8 +97,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	// function runSearchQuery() {}
-
 	async function fetchSimilarMovies(id) {
 		// get the dom
 		const skeletonItem = document.getElementById("movies-recommendation");
