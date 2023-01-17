@@ -10,15 +10,6 @@
 	--border-clr: #0101012e;
 }
 
-/* layer */
-.layer {
-	position: fixed;
-	width: 100%;
-	background-color: var(--primary-clr);
-	z-index: 199;
-	inset: 0;
-}
-
 /* main */
 .banner {
 	height: auto;

@@ -68,7 +68,7 @@ header #logo em {
 	line-height: 1;
 }
 header nav:not(:has(.home)) #logo em {
-	fill: var(--dark);
+	fill: var(--dark-theme);
 }
 header #logo em svg {
 	width: 14rem;
@@ -80,11 +80,12 @@ header {
 	z-index: 2;
 	width: 100%;
 }
+header:has(nav) nav:not(:has(.home)) {
+	position: fixed;
+	width: 100%;
+}
 header nav {
 	padding: 1.3rem 1.8rem;
-}
-header nav:not(:has(.home)) {
-	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 ._nav-links a {
 	font-size: 0.95rem;
@@ -92,10 +93,10 @@ header nav:not(:has(.home)) {
 	position: relative;
 }
 header nav:not(:has(.home)) ._nav-links a {
-	color: var(--dark);
+	color: var(--dark-theme);
 }
-header nav:has(button) button {
-	color: var(--white);
+header nav:not(:has(.home)):has(button) button {
+	color: var(--dark-theme);
 }
 header nav:has(button) button svg {
 	font-size: 1.6rem;
@@ -131,7 +132,7 @@ header nav .nav-theme .git-hub em:hover {
 	color: var(--primary-clr);
 }
 header nav:not(:has(.home)) .git-hub em {
-	color: var(--dark);
+	color: var(--dark-theme);
 }
 ._nav-links a::before {
 	position: absolute;

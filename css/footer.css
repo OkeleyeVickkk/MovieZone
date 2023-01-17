@@ -7,13 +7,13 @@
 	--light-dark: #1d2d44;
 }
 footer .footer-inner {
-	padding: 1.2rem 0;
+	padding: 1rem 0;
 	background-color: var(--primary-clr);
 }
 .footer-inner .copy-right span {
 	display: flex;
 	align-items: center;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	justify-content: center;
 	color: var(--white);
 }

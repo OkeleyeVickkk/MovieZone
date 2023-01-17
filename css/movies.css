@@ -1,0 +1,111 @@
+:root {
+	--white: #fff;
+	--black: #000;
+	--primary-clr: #e71d36;
+	--primary-clr-opacity: rgb(231, 29, 54, 0.2);
+	--dark: #0d1321;
+	/* --skeleton-color: #d3d8dc; */
+	--skeleton-color: rgba(211, 216, 220, 0.561);
+	--skeleton-color-opacity: rgba(211, 216, 220, 0.1);
+	--border-clr: #0101012e;
+}
+
+/* layer */
+.layer {
+	position: fixed;
+	width: 100%;
+	background-color: var(--primary-clr);
+	z-index: 199;
+	inset: 0;
+}
+.search-layer {
+	display: none;
+	inset: 0;
+	z-index: 190;
+	background-color: rgba(0 0 0 / 70%);
+	overflow: hidden;
+	height: 100%;
+	backdrop-filter: blur(1.5px);
+}
+.search-layer .cancel-button button {
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: var(--white);
+	translate: -2rem 2rem;
+}
+.search-layer .cancel-button button svg {
+	transition: all 280ms ease-in-out;
+	font-size: 3.4rem;
+	border-radius: 100vw;
+	padding: 0.2rem;
+}
+.search-layer .cancel-button button:hover svg {
+	backdrop-filter: blur(2px);
+	background-color: rgba(255 255 255 / 10%);
+}
+.search-layer-inner {
+	margin-top: 16%;
+	width: 70%;
+	margin-inline: auto;
+}
+@media screen and (max-width: 600px) {
+	.search-layer-inner {
+		margin-top: 48%;
+	}
+}
+.search-layer-inner h2 {
+	color: var(--white);
+	font-size: 2rem;
+	position: relative;
+}
+.search-layer-inner form .form-floating {
+	margin-top: 2.5rem;
+}
+.search-layer-inner form .form-control {
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid var(--white);
+	border-radius: 0;
+	font-size: 1.4rem;
+	color: var(--white);
+	padding: 1rem 0.75rem 1rem 0;
+}
+.search-layer-inner form .form-control:focus {
+	box-shadow: none;
+}
+.search-layer-inner form .form-control + label {
+	color: var(--white);
+	padding: 1rem 0.75rem 1rem 0;
+}
+.search-layer-inner form .form-control:focus + label {
+	padding: 1rem 0.75rem 1rem 0;
+	transform: translateY(-1.8rem) scale(0.85);
+}
+@media screen and (min-width: 768px) {
+	.search-layer-inner form .form-control:focus {
+		border-color: var(--primary-clr);
+	}
+}
+.search-layer-inner .form-input {
+	margin-top: 2rem;
+	text-align: center;
+}
+.search-layer-inner [type="submit"] {
+	background-color: var(--primary-clr);
+	margin-inline: auto;
+	text-align: center;
+	border-radius: 100vw;
+	color: var(--white);
+	padding: 1rem;
+	width: 90%;
+}
+@media all and (min-width: 600px) {
+	.search-layer-inner [type="submit"] {
+		width: 40%;
+	}
+}
+
+main {
+	padding-top: 7.5rem;
+}

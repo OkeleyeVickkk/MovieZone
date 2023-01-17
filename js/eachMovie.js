@@ -13,59 +13,10 @@ window.addEventListener("DOMContentLoaded", function () {
 	const searchParams = new URLSearchParams(queryId);
 	const movieId = searchParams.get("id");
 
-	const formtitle = document.querySelector(".search-layer-inner h2");
-	const formInput = document.querySelector(".search-layer-inner form .form-floating");
-	const cancelButton = document.querySelector(".search-layer .cancel-button button");
-	const submitButton = document.querySelector(".search-layer-inner [type='submit']");
-	const searchButton = document.querySelector(".nav-theme .git-hub button");
-	const searchLayer = document.querySelector(".search-layer");
-	cancelButton.addEventListener("click", cancelSearchLayer);
-	searchButton.addEventListener("click", callSearchLayer);
-
 	new Swiper(".swiper", {
 		effect: "cards",
 		grabCursor: true,
 	});
-
-	// toggle search button
-	function cancelSearchLayer(e) {
-		e.stopPropagation();
-		if (searchLayer.classList.contains("active")) {
-			gsap.to(searchLayer, { display: "none", xPercent: "100", yPercent: "-100", ease: "linear" });
-			searchLayer.classList.remove("active");
-		}
-	}
-
-	function callSearchLayer(e) {
-		e.stopPropagation();
-		if (!searchLayer.classList.contains("active")) {
-			searchLayer.classList.add("active");
-			timeline
-				.from(searchLayer, {
-					xPercent: "100",
-					yPercent: "-100",
-				})
-				.to(
-					searchLayer,
-					{
-						xPercent: "0",
-						yPercent: "0",
-						scale: 1,
-						display: "block",
-					},
-					"<"
-				)
-				.from(
-					[formtitle, formInput, submitButton],
-					{
-						y: 40,
-						opacity: 0,
-						stagger: 0.25,
-					},
-					"<0.45"
-				);
-		}
-	}
 
 	async function fetchMedia(URL) {
 		if (!movieId) return;
@@ -87,8 +38,6 @@ window.addEventListener("DOMContentLoaded", function () {
 			runtime,
 			overview,
 			title,
-			video,
-			vote,
 			tagline,
 			id,
 			spoken_languages: { ...name },
@@ -98,7 +47,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		// const movieImages = fetchMovieImages(id);
 		fetchMovieCasts(id);
 		fetchSimilarMovies(id);
-		fetchMovieVideo(id);
 		const movieSummary = document.querySelector(".movie-summary p");
 		const duration = document.querySelector(".little-content .runtime span .duration");
 		const releaseDate = document.querySelector(".little-content .release-date span .date");
@@ -118,13 +66,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		movieSummary.textContent = overview;
 		duration.textContent = runtime;
 	});
-
-	// async function fetchMovieImages(id) {
-	// 	const movie_url = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}&language=en-US`;
-	// 	const response = await fetch(movie_url);
-	// 	if (!response.ok || !response.status === 200) throw "Error occured";
-	// 	const data = await response.json();
-	// }
 
 	async function fetchMovieCasts(id) {
 		const movie_url = `https://api.themoviedb.org/3/movie/${id}/casts?api_key=${API_KEY}&language=en-US`;
@@ -187,12 +128,4 @@ window.addEventListener("DOMContentLoaded", function () {
 			parent.append(_movieTemplate);
 		});
 	}
-
-	const fetchMovieVideo = async (id) => {
-		// const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US`;
-		const url = `https://api.themoviedb.org/3/search/movie?query=porn&api_key=${API_KEY}&language=en-US`;
-		const response = await this.fetch(url);
-		const video = await response.json();
-		console.log(video);
-	};
 });
