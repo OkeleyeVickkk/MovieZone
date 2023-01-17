@@ -14,6 +14,7 @@
 	--black: #000;
 	--dark-theme: #003566;
 	--primary-clr: #e71d36;
+	--primary-clr-opacity: rgb(231, 29, 54, 0.2);
 	--dark: #0d1321;
 	--light-dark: #1d2d44;
 	--skeleton-color: #d3d8dc;
@@ -189,8 +190,33 @@ header nav:not(:has(.home)) .git-hub em {
 	}
 }
 
+.scroll-to-top {
+	position: fixed;
+	bottom: 3.5rem;
+	right: 2rem;
+	z-index: 100;
+}
+.scroll-to-top button {
+	color: var(--white);
+	aspect-ratio: 1 / 1;
+	width: 3rem;
+	background-color: var(--primary-clr);
+	border-radius: 100vw;
+	padding: 3px;
+	display: grid;
+	place-content: center;
+}
+.scroll-to-top button svg {
+	font-size: 2rem;
+}
 @media all and (max-width: 600px) {
 	html {
 		font-size: 14px;
+	}
+	.scroll-to-top {
+		position: fixed;
+		bottom: 2.5rem;
+		right: 2rem;
+		z-index: 100;
 	}
 }

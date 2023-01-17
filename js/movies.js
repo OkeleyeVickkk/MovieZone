@@ -12,10 +12,17 @@ const submitButton = document.querySelector(".search-layer-inner [type='submit']
 const searchButton = document.querySelector(".nav-theme .git-hub button");
 const searchLayer = document.querySelector(".search-layer");
 const readMoreButton = document.querySelector(".read_more button");
+const scrollToTopButton = document.querySelector(".scroll-to-top");
 
 cancelButton.addEventListener("click", cancelSearchLayer);
 searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
+
+gsap.to(scrollToTopButton, {
+	y: -25,
+	yoyo: true,
+	repeat: -1,
+});
 
 function cancelSearchLayer(e) {
 	e.stopPropagation();
@@ -81,21 +88,21 @@ const searchMovie = async (num) => {
 	const movieTemplate = document.getElementById("movie-item");
 	const movies = data.results;
 	movies.forEach((movie) => {
-		console.log(movie);
 		const clone = movieTemplate.content.cloneNode(true);
 
-		const { backdrop_path, poster_path, title, vote_average, id } = movie;
+		const { backdrop_path, poster_path, title, vote_average, id, release_date } = movie;
 
+		clone.querySelector(".each-movie").href = `./movie.html?id=${id}`;
 		clone.querySelector(".movie-image-wrapper img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
 		clone.querySelector(".movie-content .movie-title").textContent = title;
 		clone.querySelector(".movie-image-wrapper .vote-average .value").textContent = filterVoteAverage(vote_average);
+		clone.querySelector(".movie-content .date span").textContent = getProperDate(release_date);
 
 		parent.append(clone); //paste to the screen
 	});
 
 	function filterVoteAverage(vote_average) {
 		let [rateMajor, rateMinor] = vote_average.toString().split(".");
-		console.log(rateMajor, rateMinor);
 		if (rateMinor) {
 			rateMinor.length > 1 ? rateMinor.split("")[0] : rateMinor;
 		} else {
@@ -103,9 +110,17 @@ const searchMovie = async (num) => {
 		}
 		return `${parseInt(rateMajor)}.${parseInt(rateMinor)}`;
 	}
+
+	function getProperDate(date) {
+		const dateArray = date.split("-");
+		const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		let response = `${dateArray[2]}, ${months[parseInt(dateArray[1]) - 1]} ${dateArray[0]}`;
+		return response;
+	}
 };
 
 searchMovie();
-// read more function
+// read more function ✅
 // search function
 // intersect observer
+// scroll to top function
