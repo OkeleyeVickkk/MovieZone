@@ -115,7 +115,7 @@ main {
 }
 main .movie-wrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	gap: 2rem;
 }
 
@@ -223,4 +223,17 @@ main .movie-wrapper {
 	100% {
 		transform: translateX(300%);
 	}
+}
+
+.read_more {
+	margin-top: 4rem;
+	display: flex;
+	justify-content: center;
+}
+.read_more button {
+	font-size: 0.9rem;
+	background-color: var(--primary-clr);
+	color: var(--white);
+	border-radius: 100vw;
+	padding: 0.8rem 3rem;
 }

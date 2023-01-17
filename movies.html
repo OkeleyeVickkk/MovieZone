@@ -140,7 +140,12 @@
 								<a href="#" class="each-movie">
 									<div class="each-movie-inner">
 										<div class="movie-image-wrapper">
-											<img src="./images/avengers.jpg" alt="" class="img-fluid" />
+											<div class="movie-image-wrapper-inner">
+												<img src="./images/captain-america-trilogy.jpg" alt="" class="img-fluid" />
+											</div>
+											<div class="vote-average position-absolute">
+												<span class="value">7.8</span>
+											</div>
 										</div>
 										<div class="movie-content">
 											<h6 class="movie-title">${title}</h6>
@@ -169,22 +174,6 @@
 								</a>
 								<!-- each movie end -->
 							</template>
-
-							<!-- skeleton template start -->
-							<template id="skeleton-loader">
-								<div class="skeleton-item-wrapper">
-									<div class="skeleton-image skeleton"></div>
-									<div>
-										<div class="skeleton-title skeleton"></div>
-										<div class="d-flex align-items-center justify-content-between mt-3">
-											<div class="skeleton-release-date skeleton"></div>
-											<div class="skeleton-like skeleton"></div>
-										</div>
-									</div>
-								</div>
-							</template>
-							<!-- skeleton template ends -->
-
 							<!-- <a href="#" class="each-movie">
 								<div class="each-movie-inner">
 									<div class="movie-image-wrapper">
@@ -220,6 +209,25 @@
 									</div>
 								</div>
 							</a> -->
+						</div>
+
+						<!-- skeleton template start -->
+						<template id="skeleton-loader">
+							<div class="skeleton-item-wrapper">
+								<div class="skeleton-image skeleton"></div>
+								<div>
+									<div class="skeleton-title skeleton"></div>
+									<div class="d-flex align-items-center justify-content-between mt-3">
+										<div class="skeleton-release-date skeleton"></div>
+										<div class="skeleton-like skeleton"></div>
+									</div>
+								</div>
+							</div>
+						</template>
+						<!-- skeleton template ends -->
+
+						<div class="read_more">
+							<button type="button">Read more...</button>
 						</div>
 					</div>
 				</div>
