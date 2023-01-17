@@ -144,12 +144,15 @@ function pasteShowsToScreen(tvShows) {
 
 	const posterBg = document.querySelector(".tv-show .image-background");
 	const allslider = document.querySelectorAll(".tv-show .swiper-slide");
-	// get default first slide ==> allslider[0]
 	allslider.forEach((slide) => {
+		// get default first slide ==>
+		// const firstImage = allslider[0];
+		// console.log(firstImage);
 		const poster_path = slide.querySelector("li").getAttribute("poster-link");
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
 		});
+		const mediaQuery = window.matchMedia(`(max-width: 600px)`);
 	});
 }
 function pasteMoviesToScreen(movies) {

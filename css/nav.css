@@ -2,9 +2,14 @@
 	font-family: font-family;
 	src: url("../font/BeVietnamPro-Regular.ttf");
 }
+@font-face {
+	font-family: font-bold;
+	src: url("../font/BeVietnamPro-Bold.ttf");
+}
 /* variables */
 :root {
 	--font-family: font-family;
+	--font-bold: font-bold;
 	--white: #fff;
 	--black: #000;
 	--dark-theme: #003566;
@@ -34,6 +39,9 @@ ul {
 * :is(h1, h2, h3, h4, h5, h6, ul, p) {
 	margin: 0;
 	color: var(--light-dark);
+}
+* :is(h1, h2, h3, h4, h5, h6, :is(h1, h2, h3, h4, h5, h6) > span) {
+	font-family: var(--font-bold);
 }
 a {
 	text-decoration: none;

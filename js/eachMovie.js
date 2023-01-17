@@ -80,7 +80,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	const movieDetail = fetchMedia(movie);
 
 	movieDetail.then((response) => {
-		console.log(response);
 		const {
 			backdrop_path,
 			release_date,
@@ -99,6 +98,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		// const movieImages = fetchMovieImages(id);
 		fetchMovieCasts(id);
 		fetchSimilarMovies(id);
+		fetchMovieVideo(id);
 		const movieSummary = document.querySelector(".movie-summary p");
 		const duration = document.querySelector(".little-content .runtime span .duration");
 		const releaseDate = document.querySelector(".little-content .release-date span .date");
@@ -137,7 +137,6 @@ window.addEventListener("DOMContentLoaded", function () {
 		const castswrapper = document.querySelector(".casts .grid-wrapper");
 		// filter casts with images
 		const res = casts.cast.filter((cast) => {
-			console.log(cast);
 			const { profile_path } = cast;
 			return profile_path != null;
 		});
@@ -188,4 +187,12 @@ window.addEventListener("DOMContentLoaded", function () {
 			parent.append(_movieTemplate);
 		});
 	}
+
+	const fetchMovieVideo = async (id) => {
+		// const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US`;
+		const url = `https://api.themoviedb.org/3/search/movie?query=porn&api_key=${API_KEY}&language=en-US`;
+		const response = await this.fetch(url);
+		const video = await response.json();
+		console.log(video);
+	};
 });
