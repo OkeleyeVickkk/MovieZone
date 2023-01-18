@@ -19,18 +19,29 @@ searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
 scrollToTopButton.addEventListener("click", scrollToTop);
 
-gsap.to(scrollToTopButton, {
-	y: -25,
-	yoyo: true,
-	repeat: -1,
-});
+function slideIn() {
+	timeline.to(scrollToTopButton, {
+		x: "-7rem",
+		duration: 0.8,
+		opacity: 1,
+	});
+	// .to(
+	// 	scrollToTopButton,
+	// 	{
+	// 		y: -25,
+	// 		yoyo: true,
+	// 		repeat: -1,
+	// 	},
+	// 	"  > 0.2"
+	// );
+}
 
 function scrollToTop() {}
 
 function cancelSearchLayer(e) {
 	e.stopPropagation();
 	if (searchLayer.classList.contains("active")) {
-		gsap.to(searchLayer, { display: "none", xPercent: "100", yPercent: "-100", ease: "linear" });
+		gsap.to(searchLayer, { display: "none", xPercent: "100", yPercent: "-100", ease: "linear", duration: 0.25 });
 		searchLayer.classList.remove("active");
 	}
 }
@@ -47,6 +58,7 @@ function callSearchLayer(e) {
 			.to(
 				searchLayer,
 				{
+					duration: 0.5,
 					xPercent: "0",
 					yPercent: "0",
 					scale: 1,
@@ -127,3 +139,11 @@ searchMovie();
 // intersect observer
 // scroll to top function
 // search function
+
+const windowHalfHeight = window.innerHeight / 2;
+const x = document.documentElement.body || document.body;
+window.addEventListener("scroll", () => {
+	if (window.pageYOffset > windowHalfHeight) {
+		slideIn();
+	}
+});
