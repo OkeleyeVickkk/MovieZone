@@ -19,8 +19,6 @@ searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
 scrollToTopButton.addEventListener("click", scrollToTop);
 
-function scrollToTop() {}
-
 function cancelSearchLayer(e) {
 	e.stopPropagation();
 	if (searchLayer.classList.contains("active")) {
@@ -117,6 +115,13 @@ searchMovie();
 // scroll to top function
 // search function
 
+function slideIn() {
+	timeline.to(scrollToTopButton, {
+		duration: 0.8,
+		opacity: 1,
+	});
+}
+
 const windowHalfHeight = window.innerHeight / 2;
 const x = document.documentElement.body || document.body;
 window.addEventListener("scroll", () => {
@@ -125,13 +130,9 @@ window.addEventListener("scroll", () => {
 	}
 });
 
-function slideIn() {
-	timeline.to(scrollToTopButton, {
-		duration: 0.8,
-		opacity: 1,
-	});
-}
-const mediaQuery = window.matchMedia("max-width: 600px");
+function scrollToTop() {}
+
+const mediaQuery = window.matchMedia("(max-width: 600px)");
 console.log(mediaQuery);
 
 // function slideOut() {
