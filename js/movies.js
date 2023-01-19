@@ -19,23 +19,6 @@ searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
 scrollToTopButton.addEventListener("click", scrollToTop);
 
-function slideIn() {
-	timeline.to(scrollToTopButton, {
-		x: "-7rem",
-		duration: 0.8,
-		opacity: 1,
-	});
-	// .to(
-	// 	scrollToTopButton,
-	// 	{
-	// 		y: -25,
-	// 		yoyo: true,
-	// 		repeat: -1,
-	// 	},
-	// 	"  > 0.2"
-	// );
-}
-
 function scrollToTop() {}
 
 function cancelSearchLayer(e) {
@@ -82,12 +65,6 @@ let defaultPageNumber = 1;
 
 function readMore(e) {
 	e.stopPropagation();
-	// const skeletonItem = document.getElementById("skeleton-loader");
-	// const parent = document.querySelector(".movie-wrapper");
-	// for (let i = 0; i < 20; i++) {
-	// 	const cloneSkeletons = skeletonItem.content.cloneNode(true);
-	// 	parent.innerHTML += cloneSkeletons;
-	// }
 	const num = ++defaultPageNumber;
 	searchMovie(num);
 }
@@ -147,3 +124,20 @@ window.addEventListener("scroll", () => {
 		slideIn();
 	}
 });
+
+function slideIn() {
+	timeline.to(scrollToTopButton, {
+		duration: 0.8,
+		opacity: 1,
+	});
+}
+const mediaQuery = window.matchMedia("max-width: 600px");
+console.log(mediaQuery);
+
+// function slideOut() {
+// 	timeline.to(scrollToTopButton, {
+// 		x: "7rem",
+// 		duration: 0.8,
+// 		opacity: 1,
+// 	});
+// }
