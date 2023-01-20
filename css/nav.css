@@ -92,6 +92,7 @@ header nav {
 	font-size: 0.95rem;
 	color: var(--white);
 	position: relative;
+	white-space: nowrap;
 }
 header nav:not(:has(.home)) ._nav-links a {
 	color: var(--dark-theme);
@@ -102,7 +103,6 @@ header nav:not(:has(.home)):has(button) button {
 header nav:has(button) button svg {
 	font-size: 1.6rem;
 	transition: 280ms ease-in;
-	margin-top: 0.2rem;
 }
 header nav:has(button) button:hover svg {
 	color: var(--primary-clr);
@@ -120,7 +120,7 @@ header nav .nav-theme {
 	justify-content: flex-end;
 }
 header nav .nav-theme .git-hub {
-	column-gap: 1.5rem;
+	column-gap: 1.2rem;
 }
 header nav .nav-theme .git-hub em {
 	font-size: 2rem;
@@ -128,6 +128,7 @@ header nav .nav-theme .git-hub em {
 	line-height: 1;
 	color: var(--white);
 	transition: color 280ms ease;
+	display: flex;
 }
 header nav .nav-theme .git-hub em:hover {
 	color: var(--primary-clr);
@@ -173,23 +174,42 @@ header nav:not(:has(.home)) .git-hub em {
 	line-height: 1;
 	display: flex;
 }
-
-.offcanvas.show:not(.hiding) + .wrapper {
-	filter: blur(4px);
+.nav-theme .mobile-menu .small-menu {
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(17, 25, 40, 0.35);
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.125);
+	border-radius: 15px;
+	max-width: 200px;
+	width: 200px;
+	transition: transform 300ms ease-in-out;
+	right: -5px;
+	top: 2.2rem;
+	z-index: 999999999;
+	padding: 0.7rem 0.6rem;
+	transform: scaleY(0) scaleX(0);
+	transform-origin: top right;
 }
-@media all and (min-width: 769px) {
-	.offcanvas.show:not(.hiding),
-	.offcanvas.showing {
-		display: none;
-	}
-	.offcanvas.show:not(.hiding) + .wrapper {
-		filter: blur(0);
-	}
-	.offcanvas-backdrop.show {
-		display: none;
-	}
+.mobile-menu button.active + .small-menu {
+	transform: scaleY(100%) scale(100%);
 }
-
+.nav-theme .mobile-menu .small-menu ul {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1px;
+}
+.nav-theme .mobile-menu .small-menu ul li a {
+	padding: 10px 7px;
+	border-radius: 5px;
+	display: block;
+	color: var(--white);
+	font-size: 12px;
+	transition: background-color 280ms ease-in-out;
+}
+.mobile-menu .small-menu ul li a:hover {
+	background-color: rgb(228 230 234 / 5%);
+}
 .scroll-to-top {
 	position: fixed;
 	bottom: 3.5rem;

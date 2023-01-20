@@ -78,6 +78,11 @@ const input = document.querySelector(".search-section input");
 const form = document.querySelector(".search-section form");
 const formButton = document.querySelector(".search-section form button");
 
+const mobile_menu_button = document.querySelector(".mobile-menu button");
+const mobile_menu = document.querySelector(".mobile-menu .small-menu");
+
+mobile_menu_button.addEventListener("click", toggleMenu);
+
 const search_url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=`;
 
 async function fetchMedia(URL) {
@@ -102,16 +107,17 @@ const upcoming = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&
 const $movies = fetchMedia(upcoming);
 
 // fetch actors
-// const actors = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`;
-// const $actors = fetchMedia(actors);
+const actors = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US&page=1`;
+const $actors = fetchMedia(actors);
 
-const mediaResults = [shows, $movies];
+const mediaResults = [shows, $movies, $actors];
 
 Promise.allSettled(mediaResults)
 	.then((results) => {
-		const [tvShows, movies] = [results[0], results[1]];
+		const [tvShows, movies, actors] = [results[0], results[1], results[2]];
 		pasteShowsToScreen(tvShows);
 		pasteMoviesToScreen(movies);
+		pasteActorsToScreen(actors);
 	})
 	.catch((error) => console.log(error));
 
@@ -180,10 +186,18 @@ function pasteMoviesToScreen(movies) {
 		parent.appendChild(clonedTemplate);
 	});
 }
+function pasteActorsToScreen(actors) {
+	console.log(actors);
+}
 
 function getProperDate(date) {
 	const dateArray = date.split("-");
 	const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	let response = `${dateArray[2]}, ${months[parseInt(dateArray[1]) - 1]} ${dateArray[0]}`;
 	return response;
+}
+
+function toggleMenu(e) {
+	e.stopPropagation();
+	!this.classList.contains("active") ? this.classList.add("active") : this.classList.remove("active");
 }

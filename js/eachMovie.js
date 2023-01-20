@@ -30,6 +30,18 @@ window.addEventListener("DOMContentLoaded", function () {
 	const movie = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
 	const movieDetail = fetchMedia(movie);
 
+	const movieSummary = document.querySelector(".movie-summary p");
+	const duration = document.querySelector(".little-content .runtime span .duration");
+	const releaseDate = document.querySelector(".little-content .release-date span .date");
+	const lang_parent = document.querySelector(".little-content .lang span");
+	const lang_item = document.querySelector(".little-content .lang span .lang_template");
+	const genre_parent = document.querySelector(".little-content .genre span");
+	const genre_item = document.querySelector(".little-content .genre span .genre_template");
+	const thriller = document.querySelector(".thriller #thriller-video");
+	const movieTitle = document.querySelector(".movie-details .title h3");
+	const bannerImage = document.querySelector(".banner .banner-image");
+	const moviePoster = document.querySelector(".movie-poster img");
+
 	movieDetail.then((response) => {
 		const {
 			backdrop_path,
@@ -40,22 +52,15 @@ window.addEventListener("DOMContentLoaded", function () {
 			title,
 			tagline,
 			id,
-			spoken_languages: { ...name },
+			spoken_languages,
 			genres: [...names],
 		} = response;
 
-		// const movieImages = fetchMovieImages(id);
+		arrange(spoken_languages, lang_item, lang_parent);
+		arrange(names, genre_item, genre_parent);
+
 		fetchMovieCasts(id);
 		fetchSimilarMovies(id);
-		const movieSummary = document.querySelector(".movie-summary p");
-		const duration = document.querySelector(".little-content .runtime span .duration");
-		const releaseDate = document.querySelector(".little-content .release-date span .date");
-		const language = document.querySelector(".little-content .lang span .language");
-		const genre = document.querySelector(".little-content .genre span .genres");
-		const thriller = document.querySelector(".thriller #thriller-video");
-		const movieTitle = document.querySelector(".movie-details .title h3");
-		const bannerImage = document.querySelector(".banner .banner-image");
-		const moviePoster = document.querySelector(".movie-poster img");
 
 		const posterImages = document.querySelector(".posters-images #slide-template");
 
@@ -67,6 +72,15 @@ window.addEventListener("DOMContentLoaded", function () {
 		duration.textContent = runtime;
 		releaseDate.textContent = getProperDate(release_date);
 	});
+
+	function arrange(items, tag, parentTag) {
+		items.forEach((item) => {
+			const { name } = item;
+			const clone = tag.content.cloneNode(true); // clone tag
+			clone.querySelector("span").textContent = name;
+			parentTag.appendChild(clone);
+		});
+	}
 
 	async function fetchMovieCasts(id) {
 		const movie_url = `https://api.themoviedb.org/3/movie/${id}/casts?api_key=${API_KEY}&language=en-US`;
