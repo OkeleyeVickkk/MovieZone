@@ -130,7 +130,7 @@ header nav .nav-theme .git-hub em {
 	transition: color 280ms ease;
 	display: flex;
 }
-header nav .nav-theme .git-hub em:hover {
+header nav .nav-theme .git-hub a em:hover {
 	color: var(--primary-clr);
 }
 header nav:not(:has(.home)) .git-hub em {
@@ -190,6 +190,12 @@ header nav:not(:has(.home)) .git-hub em {
 	padding: 0.7rem 0.6rem;
 	transform: scaleY(0) scaleX(0);
 	transform-origin: top right;
+}
+.mobile-menu {
+	line-height: 1;
+}
+.mobile-menu button.active em {
+	color: var(--primary-clr) !important;
 }
 .mobile-menu button.active + .small-menu {
 	transform: scaleY(100%) scale(100%);

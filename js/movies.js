@@ -13,24 +13,15 @@ const submitButton = document.querySelector(".search-layer-inner [type='submit']
 const searchButton = document.querySelector(".nav-theme .git-hub button");
 const searchLayer = document.querySelector(".search-layer");
 const readMoreButton = document.querySelector(".read_more button");
-const scrollToTopButton = document.querySelector(".scroll-to-top button");
-const scrollToTopDiv = document.querySelector(".scroll-to-top");
 const cancelSearchInputButton = document.querySelector("form button.clear-search-input");
 
 cancelButton.addEventListener("click", cancelSearchLayer);
 searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
-scrollToTopButton.addEventListener("click", scrollToTop);
 cancelSearchInputButton.addEventListener("click", clearSearchText);
 submitButton.addEventListener("click", runSearchFetch);
 
 checkEffect(); //for input form effect
-
-window.addEventListener("scroll", function () {
-	if (document.documentElement.scrollTop == 0) {
-		fadeOut();
-	}
-});
 
 function cancelSearchLayer(e) {
 	e.stopPropagation();
@@ -133,47 +124,6 @@ function paste_to_screen(movies) {
 // intersect observer
 // scroll to top function ✅
 // search function ✅
-
-const style = {
-	slideIn: `transform: rotate(360deg);
-	right: 2rem;
-	opacity: 1;
-	`,
-	slideOut: `transform: rotate(-360deg);
-	right: 0;
-	opacity: 0;
-	`,
-};
-
-function slideIn() {
-	scrollToTopDiv.style = style.slideIn;
-	scrollToTopButton.classList.add("active");
-}
-
-function fadeOut() {
-	scrollToTopDiv.style = style.slideOut;
-	scrollToTopButton.classList.remove("active");
-}
-
-const windowHalfHeight = window.innerHeight / 1.5;
-window.addEventListener("scroll", () => {
-	if (window.pageYOffset > windowHalfHeight) {
-		slideIn();
-	}
-});
-
-function scrollToTop() {
-	const top = document.body.scrollTo == 0 || document.documentElement.scrollTop == 0;
-	if (!top) {
-		document.body.scrollTop = 0;
-		document.documentElement.scrollTop = 0;
-	}
-	window.addEventListener("scroll", function () {
-		if (document.body.scrollTo == 0 || document.documentElement.scrollTop == 0) {
-			fadeOut();
-		}
-	});
-}
 
 function checkEffect() {
 	actualFormInput.addEventListener("focus", function () {

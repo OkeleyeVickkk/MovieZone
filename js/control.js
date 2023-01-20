@@ -78,11 +78,6 @@ const input = document.querySelector(".search-section input");
 const form = document.querySelector(".search-section form");
 const formButton = document.querySelector(".search-section form button");
 
-const mobile_menu_button = document.querySelector(".mobile-menu button");
-const mobile_menu = document.querySelector(".mobile-menu .small-menu");
-
-mobile_menu_button.addEventListener("click", toggleMenu);
-
 const search_url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=`;
 
 async function fetchMedia(URL) {
@@ -195,9 +190,4 @@ function getProperDate(date) {
 	const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 	let response = `${dateArray[2]}, ${months[parseInt(dateArray[1]) - 1]} ${dateArray[0]}`;
 	return response;
-}
-
-function toggleMenu(e) {
-	e.stopPropagation();
-	!this.classList.contains("active") ? this.classList.add("active") : this.classList.remove("active");
 }
