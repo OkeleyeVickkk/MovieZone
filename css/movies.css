@@ -72,8 +72,49 @@
 	color: var(--white);
 	padding: 1rem 0.75rem 1rem 0;
 }
+.search-layer form input[type="search"]::-ms-clear {
+	display: none;
+	width: 0;
+	height: 0;
+}
+.search-layer form input[type="search"]::-ms-reveal {
+	display: none;
+	width: 0;
+	height: 0;
+}
+/* clears the ‘X’ from Chrome */
+.search-layer form input[type="search"]::-webkit-search-decoration,
+.search-layer form input[type="search"]::-webkit-search-cancel-button,
+.search-layer form input[type="search"]::-webkit-search-results-button,
+.search-layer form input[type="search"]::-webkit-search-results-decoration {
+	display: none;
+}
 .search-layer-inner form .form-control:focus {
 	box-shadow: none;
+}
+.search-layer form button.clear-search-input {
+	border: none;
+	background-color: transparent;
+	border-radius: 50%;
+	position: fixed;
+	right: 0;
+	top: 20%;
+	font-size: 2rem;
+	line-height: 1;
+	transform: translateX(4rem);
+	opacity: 0;
+	transition: color 200ms ease-in-out, transform 300ms ease, opacity 300ms ease;
+}
+form button.clear-search-input.active {
+	transform: translateX(0);
+	opacity: 1;
+}
+.search-layer form button.clear-search-input svg {
+	transition: color 300ms ease-in-out;
+	color: var(--white);
+}
+.search-layer form button.clear-search-input:hover svg {
+	color: var(--primary-clr);
 }
 .search-layer-inner form .form-control + label {
 	color: var(--white);
@@ -140,18 +181,15 @@ main .movie-wrapper {
 	color: var(--white);
 	border-radius: 100vw;
 	aspect-ratio: 1 / 1;
-	/* backdrop-filter: blur(0.5px); */
 	border: 2px solid var(--primary-clr);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 10px;
-	/* From https://css.glass */
 	background: rgba(99, 99, 99, 0.36);
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(1.5px);
 	-webkit-backdrop-filter: blur(6.5px);
-	/* border: 1px solid rgba(231, 29, 54, 0.09); */
 }
 .movie-wrapper .each-movie img {
 	object-fit: cover;

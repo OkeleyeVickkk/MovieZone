@@ -7,6 +7,7 @@ const timeline = gsap.timeline();
 
 const formtitle = document.querySelector(".search-layer-inner h2");
 const formInput = document.querySelector(".search-layer-inner form .form-floating");
+const actualFormInput = formInput.querySelector("#floatingInput");
 const cancelButton = document.querySelector(".search-layer .cancel-button button");
 const submitButton = document.querySelector(".search-layer-inner [type='submit']");
 const searchButton = document.querySelector(".nav-theme .git-hub button");
@@ -14,11 +15,14 @@ const searchLayer = document.querySelector(".search-layer");
 const readMoreButton = document.querySelector(".read_more button");
 const scrollToTopButton = document.querySelector(".scroll-to-top button");
 const scrollToTopDiv = document.querySelector(".scroll-to-top");
+const cancelSearchInputButton = document.querySelector("form button.clear-search-input");
 
 cancelButton.addEventListener("click", cancelSearchLayer);
 searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
 scrollToTopButton.addEventListener("click", scrollToTop);
+cancelSearchInputButton.addEventListener("click", clearSearchText);
+checkEffect(); //for input form effect
 
 function cancelSearchLayer(e) {
 	e.stopPropagation();
@@ -113,7 +117,7 @@ const searchMovie = async (num) => {
 searchMovie();
 // read more function ✅
 // intersect observer
-// scroll to top function
+// scroll to top function ✅
 // search function
 
 const style = {
@@ -138,7 +142,6 @@ function fadeOut() {
 }
 
 const windowHalfHeight = window.innerHeight / 1.5;
-const x = document.documentElement.body || document.body;
 window.addEventListener("scroll", () => {
 	if (window.pageYOffset > windowHalfHeight) {
 		slideIn();
@@ -156,4 +159,27 @@ function scrollToTop() {
 			fadeOut();
 		}
 	});
+}
+
+function checkEffect() {
+	actualFormInput.addEventListener("focus", function () {
+		const active = cancelSearchInputButton.classList.contains("active");
+		if (!((this.value == "" || this.value == null) && active)) {
+			this.addEventListener("input", () => {
+				if (this.value == "" || this.value == null) {
+					cancelSearchInputButton.classList.remove("active");
+				} else {
+					cancelSearchInputButton.classList.add("active");
+				}
+			});
+		}
+	});
+}
+
+function clearSearchText(e) {
+	e.stopPropagation();
+	if (!(actualFormInput.value == "" || actualFormInput.value == null)) {
+		actualFormInput.focus();
+		actualFormInput.value = " ";
+	}
 }
