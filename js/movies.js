@@ -26,6 +26,12 @@ submitButton.addEventListener("click", runSearchFetch);
 
 checkEffect(); //for input form effect
 
+window.addEventListener("scroll", function () {
+	if (document.documentElement.scrollTop == 0) {
+		fadeOut();
+	}
+});
+
 function cancelSearchLayer(e) {
 	e.stopPropagation();
 	if (searchLayer.classList.contains("active")) {
@@ -88,9 +94,9 @@ const getMoreMovies = async (num) => {
 getMoreMovies();
 
 function paste_to_screen(movies) {
-	console.log(movies);
 	const parent = document.querySelector(".movie-wrapper");
 	const movieTemplate = document.getElementById("movie-item");
+	parent.innerHTML = "";
 
 	movies.forEach((movie) => {
 		const clone = movieTemplate.content.cloneNode(true);
@@ -104,7 +110,6 @@ function paste_to_screen(movies) {
 		clone.querySelector(".movie-content .date span").textContent = getProperDate(release_date);
 
 		parent.append(clone); //paste to the screen
-		readMoreButton.style = `opacity: 1`;
 	});
 
 	function filterVoteAverage(vote_average) {
@@ -127,7 +132,7 @@ function paste_to_screen(movies) {
 // read more function ✅
 // intersect observer
 // scroll to top function ✅
-// search function
+// search function ✅
 
 const style = {
 	slideIn: `transform: rotate(360deg);
@@ -204,11 +209,10 @@ async function runSearchFetch(e) {
 
 	const completeMovies = movies.filter((movie) => {
 		const { backdrop_path, poster_path } = movie;
-		return backdrop_path != null && poster_path != null;
+		return backdrop_path !== null && poster_path !== null;
 	});
-
-	paste_to_screen(completeMovies); // paste to the dom
-
 	actualFormInput.value = "";
 	cancelSearchInputButton.classList.remove("active");
+
+	paste_to_screen(completeMovies); // paste to the dom
 }
