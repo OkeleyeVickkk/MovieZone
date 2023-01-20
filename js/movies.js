@@ -12,7 +12,8 @@ const submitButton = document.querySelector(".search-layer-inner [type='submit']
 const searchButton = document.querySelector(".nav-theme .git-hub button");
 const searchLayer = document.querySelector(".search-layer");
 const readMoreButton = document.querySelector(".read_more button");
-const scrollToTopButton = document.querySelector(".scroll-to-top");
+const scrollToTopButton = document.querySelector(".scroll-to-top button");
+const scrollToTopDiv = document.querySelector(".scroll-to-top");
 
 cancelButton.addEventListener("click", cancelSearchLayer);
 searchButton.addEventListener("click", callSearchLayer);
@@ -115,14 +116,28 @@ searchMovie();
 // scroll to top function
 // search function
 
+const style = {
+	slideIn: `transform: rotate(360deg);
+	right: 2rem;
+	opacity: 1;
+	`,
+	slideOut: `transform: rotate(-360deg);
+	right: 0;
+	opacity: 0;
+	`,
+};
+
 function slideIn() {
-	timeline.to(scrollToTopButton, {
-		duration: 0.8,
-		opacity: 1,
-	});
+	scrollToTopDiv.style = style.slideIn;
+	scrollToTopButton.classList.add("active");
 }
 
-const windowHalfHeight = window.innerHeight / 2;
+function fadeOut() {
+	scrollToTopDiv.style = style.slideOut;
+	scrollToTopButton.classList.remove("active");
+}
+
+const windowHalfHeight = window.innerHeight / 1.5;
 const x = document.documentElement.body || document.body;
 window.addEventListener("scroll", () => {
 	if (window.pageYOffset > windowHalfHeight) {
@@ -130,15 +145,15 @@ window.addEventListener("scroll", () => {
 	}
 });
 
-function scrollToTop() {}
-
-const mediaQuery = window.matchMedia("(max-width: 600px)");
-console.log(mediaQuery);
-
-// function slideOut() {
-// 	timeline.to(scrollToTopButton, {
-// 		x: "7rem",
-// 		duration: 0.8,
-// 		opacity: 1,
-// 	});
-// }
+function scrollToTop() {
+	const top = document.body.scrollTo == 0 || document.documentElement.scrollTop == 0;
+	if (!top) {
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	}
+	window.addEventListener("scroll", function () {
+		if (document.body.scrollTo == 0 || document.documentElement.scrollTop == 0) {
+			fadeOut();
+		}
+	});
+}
