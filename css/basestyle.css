@@ -256,6 +256,10 @@ main .main-inner section:not(section.image-background) {
 .swiper-slide li.movie:hover img {
 	scale: 1.15;
 }
+.swiper-slide li.movie a .name {
+	color: var(--dark);
+	font-size: 12px;
+}
 .swiper-button-next,
 .swiper-button-prev {
 	background: url("https://api.iconify.design/ph/arrow-right.svg?color=%23e71d36") no-repeat center center / contain;

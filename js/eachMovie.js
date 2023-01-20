@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 			const { name, id, profile_path } = cast;
 
-			clonedTemplate.querySelector(".grid-cast-item a").href = `./cast.html?${id}`;
+			clonedTemplate.querySelector(".grid-cast-item a").href = `#`;
 			clonedTemplate.querySelector(".grid-cast-item").id = id;
 			clonedTemplate.querySelector(".grid-cast-image img").src = `${image_base_url}${profile_path}`;
 			clonedTemplate.querySelector(".grid-cast-item .name").textContent = name;

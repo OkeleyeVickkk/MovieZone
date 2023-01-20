@@ -101,7 +101,7 @@ header nav:not(:has(.home)):has(button) button {
 	color: var(--dark-theme);
 }
 header nav:has(button) button svg {
-	font-size: 1.6rem;
+	font-size: 2rem;
 	transition: 280ms ease-in;
 }
 header nav:has(button) button:hover svg {

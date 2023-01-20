@@ -78,8 +78,6 @@ const input = document.querySelector(".search-section input");
 const form = document.querySelector(".search-section form");
 const formButton = document.querySelector(".search-section form button");
 
-const search_url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=`;
-
 async function fetchMedia(URL) {
 	const response = await fetch(URL, { method: "GET" });
 	if (!response.ok) throw " Error occured! ";
@@ -128,7 +126,7 @@ function pasteShowsToScreen(tvShows) {
 		const clonedTemplate = showTemplate.content.cloneNode(true); //clone the template
 		const { backdrop_path, id, name, poster_path, vote_average } = result;
 
-		clonedTemplate.querySelector(".swiper-slide a").href = `./tv-show.html?id=${id}`;
+		clonedTemplate.querySelector(".swiper-slide a").href = `#`;
 		clonedTemplate.querySelector(".tv-image img").src = `${image_base_url}${backdrop_path ?? poster_path}`;
 		clonedTemplate.querySelector(".swiper-slide .after h5").textContent = vote_average;
 		clonedTemplate.querySelector(".swiper-slide .show-name h6").textContent = name;
@@ -137,11 +135,6 @@ function pasteShowsToScreen(tvShows) {
 		// paste to the screen
 		sliderWrapper.appendChild(clonedTemplate);
 	});
-
-	const screenSizes = {
-		phone: 600,
-		tablet: 769,
-	};
 
 	const posterBg = document.querySelector(".tv-show .image-background");
 	const allslider = document.querySelectorAll(".tv-show .swiper-slide");
@@ -153,8 +146,9 @@ function pasteShowsToScreen(tvShows) {
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
 		});
-		const mediaQuery = window.matchMedia(`(max-width: 600px)`);
 	});
+	const mediaQuery = window.matchMedia(`(max-width: 600px)`);
+	mediaQuery.matches ? console.log("Yes") : console.log("No");
 }
 function pasteMoviesToScreen(movies) {
 	const {
@@ -182,7 +176,25 @@ function pasteMoviesToScreen(movies) {
 	});
 }
 function pasteActorsToScreen(actors) {
-	console.log(actors);
+	const {
+		value: { results },
+	} = actors;
+
+	const actor_template = document.querySelector("#pills-actors .actor_template");
+	const parent_wrapper = document.querySelector("#pills-actors .swiper-wrapper");
+
+	results.forEach((actor) => {
+		console.log(actor);
+		const { id, known_for, name, profile_path } = actor;
+
+		const actor_clone = actor_template.content.cloneNode(true);
+
+		actor_clone.querySelector("li a").href = `#`;
+		actor_clone.querySelector(".actors-image img").src = `${image_base_url}${profile_path}`;
+		actor_clone.querySelector(".actors-name .name").textContent = name;
+
+		parent_wrapper.append(actor_clone);
+	});
 }
 
 function getProperDate(date) {

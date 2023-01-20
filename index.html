@@ -52,7 +52,7 @@
 									<div class="nav-theme d-flex align-items-center">
 										<ul class="_nav-links d-flex align-items-center justify-content-end d-none d-lg-inline-flex">
 											<li><a href="./index.html">Home</a></li>
-											<li><a href="./tvshows.html">TV Shows</a></li>
+											<li><a href="#">TV Shows</a></li>
 											<li><a href="./movies.html">Movies</a></li>
 										</ul>
 										<div class="git-hub d-flex align-items-center flex-row-reverse">
@@ -66,9 +66,9 @@
 												</button>
 												<div class="small-menu position-absolute">
 													<ul>
-														<li><a href="">Home</a></li>
-														<li><a href="">TV Shows</a></li>
-														<li><a href="">Movies</a></li>
+														<li><a href="./index.html">Home</a></li>
+														<li><a href="#">TV Shows</a></li>
+														<li><a href="./movies.html">Movies</a></li>
 													</ul>
 												</div>
 											</div>
@@ -353,51 +353,20 @@
 											<!-- Additional required wrapper -->
 											<div class="swiper-wrapper">
 												<!-- Slides -->
-												<div class="swiper-slide">
-													<li>
-														<a href="">
-															<div class="actors-image">
-																<img src="./images/aliens.jpg" alt="" class="img-fluid" />
-															</div>
-														</a>
-													</li>
-												</div>
-												<div class="swiper-slide">
-													<li class="movie">
-														<a href="">
-															<div class="actors-image">
-																<img src="./images/star-wars.jpg" alt="" class="img-fluid" />
-															</div>
-														</a>
-													</li>
-												</div>
-												<div class="swiper-slide">
-													<li class="movie">
-														<a href="">
-															<div class="actors-image">
-																<img src="./images/joker.jpg" alt="" class="img-fluid" />
-															</div>
-														</a>
-													</li>
-												</div>
-												<div class="swiper-slide">
-													<li class="movie">
-														<a href="">
-															<div class="actors-image">
-																<img src="./images/freeguy.jpg" alt="" class="img-fluid" />
-															</div>
-														</a>
-													</li>
-												</div>
-												<div class="swiper-slide">
-													<li class="movie">
-														<a href="">
-															<div class="actors-image">
-																<img src="./images/jumanji.jpg" alt="" class="img-fluid" />
-															</div>
-														</a>
-													</li>
-												</div>
+												<template class="actor_template">
+													<div class="swiper-slide">
+														<li class="movie">
+															<a href="">
+																<div class="actors-image">
+																	<img src="./images/aliens.jpg" alt="" class="img-fluid" />
+																</div>
+																<div class="actors-name">
+																	<span class="name">Jack Dorsey</span>
+																</div>
+															</a>
+														</li>
+													</div>
+												</template>
 											</div>
 											<!-- If we need navigation buttons -->
 											<div class="swiper-button-prev"></div>
