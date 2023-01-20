@@ -22,6 +22,8 @@ searchButton.addEventListener("click", callSearchLayer);
 readMoreButton.addEventListener("click", readMore);
 scrollToTopButton.addEventListener("click", scrollToTop);
 cancelSearchInputButton.addEventListener("click", clearSearchText);
+submitButton.addEventListener("click", runSearchFetch);
+
 checkEffect(); //for input form effect
 
 function cancelSearchLayer(e) {
@@ -69,18 +71,27 @@ let defaultPageNumber = 1;
 function readMore(e) {
 	e.stopPropagation();
 	const num = ++defaultPageNumber;
-	searchMovie(num);
+	getMoreMovies(num);
 }
 
-const searchMovie = async (num) => {
-	const parent = document.querySelector(".movie-wrapper");
+const getMoreMovies = async (num) => {
 	const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${num}`;
 	const response = await fetch(url);
 	if (!response.ok) throw " Error occured! ";
 	const data = await response.json();
 
-	const movieTemplate = document.getElementById("movie-item");
 	const movies = data.results;
+
+	paste_to_screen(movies);
+};
+
+getMoreMovies();
+
+function paste_to_screen(movies) {
+	console.log(movies);
+	const parent = document.querySelector(".movie-wrapper");
+	const movieTemplate = document.getElementById("movie-item");
+
 	movies.forEach((movie) => {
 		const clone = movieTemplate.content.cloneNode(true);
 
@@ -112,9 +123,7 @@ const searchMovie = async (num) => {
 		let response = `${dateArray[2]}, ${months[parseInt(dateArray[1]) - 1]} ${dateArray[0]}`;
 		return response;
 	}
-};
-
-searchMovie();
+}
 // read more function ✅
 // intersect observer
 // scroll to top function ✅
@@ -182,4 +191,24 @@ function clearSearchText(e) {
 		actualFormInput.focus();
 		actualFormInput.value = " ";
 	}
+}
+
+async function runSearchFetch(e) {
+	e.preventDefault();
+	cancelSearchLayer(e);
+	let inputValue = actualFormInput.value;
+	const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${inputValue}`;
+	const response = await fetch(url);
+	const data = await response.json();
+	const movies = data.results;
+
+	const completeMovies = movies.filter((movie) => {
+		const { backdrop_path, poster_path } = movie;
+		return backdrop_path != null && poster_path != null;
+	});
+
+	paste_to_screen(completeMovies); // paste to the dom
+
+	actualFormInput.value = "";
+	cancelSearchInputButton.classList.remove("active");
 }
