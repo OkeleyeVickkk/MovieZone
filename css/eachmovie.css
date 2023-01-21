@@ -82,7 +82,7 @@ main .main-inner section {
 .little-content .badge {
 	padding: 6px 1rem;
 	border-radius: 3px;
-	margin: 0 1px 0 0;
+	margin: 3px 0;
 	font-size: 12px;
 	font-weight: 500;
 }
