@@ -146,6 +146,9 @@ function pasteShowsToScreen(tvShows) {
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
 		});
+		slide.addEventListener("mouseenter", () => {
+			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
+		});
 	});
 	const mediaQuery = window.matchMedia(`(max-width: 600px)`);
 	mediaQuery.matches ? console.log("Yes") : console.log("No");
