@@ -79,16 +79,15 @@ const getMoreMovies = async (num) => {
 
 	const movies = data.results;
 
-	paste_to_screen(movies);
+	paste_to_screen(movies, 1);
 };
 
 getMoreMovies();
 
-function paste_to_screen(movies) {
+function paste_to_screen(movies, tag) {
 	const parent = document.querySelector(".movie-wrapper");
 	const movieTemplate = document.getElementById("movie-item");
-	parent.innerHTML = "";
-
+	tag === 0 ? (parent.innerHTML = "") : "";
 	movies.forEach((movie) => {
 		const clone = movieTemplate.content.cloneNode(true);
 
@@ -101,6 +100,7 @@ function paste_to_screen(movies) {
 		clone.querySelector(".movie-content .date span").textContent = getProperDate(release_date);
 
 		parent.append(clone); //paste to the screen
+		tag === 1 ? (readMoreButton.style = `opacity: 1`) : (readMoreButton.style = `opacity: 0`);
 	});
 
 	function filterVoteAverage(vote_average) {
@@ -120,10 +120,6 @@ function paste_to_screen(movies) {
 		return response;
 	}
 }
-// read more function ✅
-// intersect observer
-// scroll to top function ✅
-// search function ✅
 
 function checkEffect() {
 	actualFormInput.addEventListener("focus", function () {
@@ -164,5 +160,5 @@ async function runSearchFetch(e) {
 	actualFormInput.value = "";
 	cancelSearchInputButton.classList.remove("active");
 
-	paste_to_screen(completeMovies); // paste to the dom
+	paste_to_screen(completeMovies, 0); // paste to the dom
 }
