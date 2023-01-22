@@ -81,20 +81,10 @@ header {
 	z-index: 2;
 	width: 100%;
 }
-/* header:has(nav) nav:not(:has(.home)) {
+header:has(nav) nav:not(:has(.home)) {
 	position: fixed;
 	width: 100%;
-} */
-header:has(nav) {
-	position: fixed;
-	width: 100%;
-}
-/* header:has(nav).active nav:not(:has(.home)) {
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-	background-color: var(--white);
-} */
-header:has(nav).active {
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	background-color: var(--white);
 }
 header nav {

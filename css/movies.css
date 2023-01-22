@@ -148,8 +148,7 @@ form button.clear-search-input.active {
 
 main {
 	position: relative;
-	top: 7rem;
-	margin-bottom: 3rem;
+	margin: 7rem 0 3rem;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
