@@ -162,17 +162,3 @@ async function runSearchFetch(e) {
 
 	paste_to_screen(completeMovies, 0); // paste to the dom
 }
-
-// testing intersect observer
-
-const item = document.querySelector(".wrapper header ");
-
-const observer = new IntersectionObserver(runObservation);
-
-function runObservation(entries) {
-	entries.forEach((entry) => {
-		console.log(entry);
-	});
-}
-
-observer.observe(item);

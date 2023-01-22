@@ -147,7 +147,9 @@ form button.clear-search-input.active {
 }
 
 main {
-	padding: 7.5rem 0 3rem;
+	position: relative;
+	top: 7rem;
+	margin-bottom: 3rem;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
