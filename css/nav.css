@@ -72,7 +72,7 @@ header nav:not(:has(.home)) #logo em {
 	fill: var(--dark-theme);
 }
 header #logo em svg {
-	width: 14rem;
+	width: 12rem;
 }
 header {
 	position: absolute;
@@ -101,7 +101,7 @@ header nav:not(:has(.home)):has(button) button {
 	color: var(--dark-theme);
 }
 header nav:has(button) button svg {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	transition: 280ms ease-in;
 }
 header nav:has(button) button:hover svg {
@@ -120,10 +120,10 @@ header nav .nav-theme {
 	justify-content: flex-end;
 }
 header nav .nav-theme .git-hub {
-	column-gap: 1.2rem;
+	column-gap: 0.6rem;
 }
 header nav .nav-theme .git-hub em {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	cursor: pointer;
 	line-height: 1;
 	color: var(--white);
