@@ -100,7 +100,7 @@ function paste_to_screen(movies, tag) {
 		clone.querySelector(".movie-content .date span").textContent = getProperDate(release_date);
 
 		parent.append(clone); //paste to the screen
-		tag === 1 ? (readMoreButton.style = `opacity: 1`) : (readMoreButton.style = `opacity: 0`);
+		tag === 1 ? (readMoreButton.style = `opacity: 1`) : (readMoreButton.style = `opacity: 0; display: none`);
 	});
 
 	function filterVoteAverage(vote_average) {

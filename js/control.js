@@ -140,18 +140,14 @@ function pasteShowsToScreen(tvShows) {
 	const allslider = document.querySelectorAll(".tv-show .swiper-slide");
 	allslider.forEach((slide) => {
 		// get default first slide ==>
-		// const firstImage = allslider[0];
-		// console.log(firstImage);
 		const poster_path = slide.querySelector("li").getAttribute("poster-link");
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
 		});
-		slide.addEventListener("mouseenter", () => {
-			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
-		});
 	});
-	const mediaQuery = window.matchMedia(`(max-width: 600px)`);
-	mediaQuery.matches ? console.log("Yes") : console.log("No");
+	const firstSlide = allslider[0];
+	const firstSlideImage = firstSlide.querySelector("li").getAttribute("poster-link");
+	posterBg.style = `background-image: url(${image_base_url}${firstSlideImage})`;
 }
 function pasteMoviesToScreen(movies) {
 	const {
@@ -187,7 +183,6 @@ function pasteActorsToScreen(actors) {
 	const parent_wrapper = document.querySelector("#pills-actors .swiper-wrapper");
 
 	results.forEach((actor) => {
-		console.log(actor);
 		const { id, known_for, name, profile_path } = actor;
 
 		const actor_clone = actor_template.content.cloneNode(true);

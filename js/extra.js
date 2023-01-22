@@ -3,7 +3,6 @@ const scrollToTopDiv = document.querySelector(".scroll-to-top");
 const mobile_menu_button = document.querySelector(".mobile-menu button");
 const mobile_menu = document.querySelector(".mobile-menu .small-menu");
 
-console.log(mobile_menu_button);
 // <=======  actions ========>
 mobile_menu_button.addEventListener("click", toggleMenu);
 scrollToTopButton.addEventListener("click", scrollToTop);
