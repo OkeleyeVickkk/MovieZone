@@ -109,7 +109,7 @@ Promise.allSettled(mediaResults)
 	.then((results) => {
 		const [tvShows, movies, actors] = [results[0], results[1], results[2]];
 		pasteShowsToScreen(tvShows);
-		setTimeout(pasteMoviesToScreen(movies), 5000);
+		setTimeout(pasteMoviesToScreen(movies), 10000);
 		pasteActorsToScreen(actors);
 	})
 	.catch((error) => console.log(error));
