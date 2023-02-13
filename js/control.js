@@ -78,7 +78,7 @@ const input = document.querySelector(".search-section input");
 const form = document.querySelector(".search-section form");
 const formButton = document.querySelector(".search-section form button");
 
-setTimeout(async function fetchMedia(URL) {
+async function fetchMedia(URL) {
 	const response = await fetch(URL, { method: "GET" });
 	if (!response.ok) throw " Error occured! ";
 	const skeletonItem = document.getElementById("skeleton-loader");
@@ -89,7 +89,7 @@ setTimeout(async function fetchMedia(URL) {
 	}
 	const datagotten = await response.json();
 	return datagotten;
-}, 5000)
+}
 
 // fetch tv shows
 const tvshows = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US`;
@@ -109,7 +109,7 @@ Promise.allSettled(mediaResults)
 	.then((results) => {
 		const [tvShows, movies, actors] = [results[0], results[1], results[2]];
 		pasteShowsToScreen(tvShows);
-		pasteMoviesToScreen(movies);
+		setTimeout(pasteMoviesToScreen(movies), 5000);
 		pasteActorsToScreen(actors);
 	})
 	.catch((error) => console.log(error));
