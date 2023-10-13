@@ -23,6 +23,13 @@
 }
 .banner .banner-image {
 	filter: brightness(0.5);
+	height: 100%;
+
+	.img-fluid {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 .banner .banner-text {
 	position: absolute;
