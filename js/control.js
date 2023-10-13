@@ -139,7 +139,7 @@ function pasteShowsToScreen(tvShows) {
 	const posterBg = document.querySelector(".tv-show .image-background");
 	const allslider = document.querySelectorAll(".tv-show .swiper-slide");
 	allslider.forEach((slide) => {
-		// get default first slide ==>
+		// get default first slide =>
 		const poster_path = slide.querySelector("li").getAttribute("poster-link");
 		slide.addEventListener("mouseenter", () => {
 			posterBg.style = `background-image: url(${image_base_url}${poster_path})`;
@@ -187,7 +187,7 @@ function pasteActorsToScreen(actors) {
 
 		const actor_clone = actor_template.content.cloneNode(true);
 
-		actor_clone.querySelector("li a").href = `#`;
+		actor_clone.querySelector("li a").href = ``;
 		actor_clone.querySelector(".actors-image img").src = `${image_base_url}${profile_path}`;
 		actor_clone.querySelector(".actors-name .name").textContent = name;
 

@@ -37,7 +37,6 @@ window.addEventListener("DOMContentLoaded", function () {
 	const lang_item = document.querySelector(".little-content .lang span .lang_template");
 	const genre_parent = document.querySelector(".little-content .genre span");
 	const genre_item = document.querySelector(".little-content .genre span .genre_template");
-	const thriller = document.querySelector(".thriller #thriller-video");
 	const movieTitle = document.querySelector(".movie-details .title h3");
 	const bannerImage = document.querySelector(".banner .banner-image");
 	const moviePoster = document.querySelector(".movie-poster img");
@@ -61,8 +60,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
 		fetchMovieCasts(id);
 		fetchSimilarMovies(id);
-
-		const posterImages = document.querySelector(".posters-images #slide-template");
 
 		// paste them to the screen
 		moviePoster.src = `${image_base_url}${backdrop_path ?? poster_path}`;
@@ -102,7 +99,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 			const { name, id, profile_path } = cast;
 
-			clonedTemplate.querySelector(".grid-cast-item a").href = `#`;
+			clonedTemplate.querySelector(".grid-cast-item a").href = `./actor.html?actor_id=${id}`;
 			clonedTemplate.querySelector(".grid-cast-item").id = id;
 			clonedTemplate.querySelector(".grid-cast-image img").src = `${image_base_url}${profile_path}`;
 			clonedTemplate.querySelector(".grid-cast-item .name").textContent = name;
@@ -125,7 +122,9 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 		if (!response.ok || !response.status === 200) throw "Error occured";
 		const movies = await response.json();
-		const firstTenMovies = movies.results.splice(0, 10);
+		const firstTenMovies = movies.results.splice(0, 10).filter((eachMovie) => {
+			return eachMovie.backdrop_path != null || eachMovie.poster_path != null;
+		});
 
 		parent.innerHTML = "";
 		const movieTemplate = document.getElementById("movieTemplate");
