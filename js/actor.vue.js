@@ -38,8 +38,11 @@ const app = createApp({
 				// remove the profile_path property
 				const { profile_path, ...otherData } = actorData;
 				this.actorDetails = { userImage: fullImage, ...otherData };
+				console.log(otherData);
 				document.title = actorData.name;
-			} catch (error) {}
+			} catch (error) {
+				console.log(error);
+			}
 		},
 
 		fetchActorImages: async function (actorId) {
@@ -72,6 +75,7 @@ const app = createApp({
 
 	created() {
 		const searchActorId = searchParams.get("actor_id");
+		if (!searchActorId) history.back();
 		this.fetchActorDetails(searchActorId);
 		this.fetchActorImages(searchActorId);
 	},
