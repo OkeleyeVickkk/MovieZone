@@ -3,11 +3,45 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+		<link rel="stylesheet" href="./css/basestyle.css" />
+		<link rel="stylesheet" href="./css/nav.css" />
+		<link rel="stylesheet" href="./css/actors.css" />
+		<title>Actor</title>
 	</head>
 	<body>
-		actor
+		<style>
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+		<main id="vue-app">
+			<div v-if="pageLoading" class="position-fixed top-0 bottom-0 v-page-loader">
+				<div class="spinner"></div>
+			</div>
+			<div class="container py-5">
+				<div class="row col-12 align-items-start m-0">
+					<aside class="col-md-5">
+						<figure class="m-0">
+							<img :src="actorDetails.userImage" alt="" class="img-fluid w-100" />
+						</figure>
+					</aside>
+					<aside class="col-md-6"></aside>
+				</div>
+				<br />
+				<div class="row col-12 mx-0 v-image-container">
+					<div v-for="(image, index) in userImages" :class="[`v-each-child-${index + 1}`, 'col-6 col-md-4']" class="p-0">
+						<div class="v-image-inner overflow-hidden">
+							<div class="v-image-inner-inner border">
+								<img :src="image" :alt="image" class="img-fluid w-100 h-100" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="./js/actor.vue.js"></script>
 	</body>
 </html>
